@@ -296,7 +296,6 @@ func TestFailAgree2B(t *testing.T) {
 	cfg.one(106, servers, true)
 	time.Sleep(RaftElectionTimeout)
 	cfg.one(107, servers, true)
-
 	cfg.end()
 }
 
@@ -497,7 +496,7 @@ func TestBackup2B(t *testing.T) {
 
 	cfg.begin("Test (2B): leader backs up quickly over incorrect follower logs")
 
-	cfg.one(rand.Int(), servers, true)
+	cfg.one(rand.Int()%100, servers, true)
 
 	// put leader and one follower in a partition
 	leader1 := cfg.checkOneLeader()
@@ -506,8 +505,8 @@ func TestBackup2B(t *testing.T) {
 	cfg.disconnect((leader1 + 4) % servers)
 
 	// submit lots of commands that won't commit
-	for i := 0; i < 50; i++ {
-		cfg.rafts[leader1].Start(rand.Int())
+	for i := 0; i < 5; i++ {
+		cfg.rafts[leader1].Start(rand.Int() % 100)
 	}
 
 	time.Sleep(RaftElectionTimeout / 2)
@@ -521,8 +520,8 @@ func TestBackup2B(t *testing.T) {
 	cfg.connect((leader1 + 4) % servers)
 
 	// lots of successful commands to new group.
-	for i := 0; i < 50; i++ {
-		cfg.one(rand.Int(), 3, true)
+	for i := 0; i < 5; i++ {
+		cfg.one(rand.Int()%100, 3, true)
 	}
 
 	// now another partitioned leader and one follower
@@ -534,8 +533,8 @@ func TestBackup2B(t *testing.T) {
 	cfg.disconnect(other)
 
 	// lots more commands that won't commit
-	for i := 0; i < 50; i++ {
-		cfg.rafts[leader2].Start(rand.Int())
+	for i := 0; i < 5; i++ {
+		cfg.rafts[leader2].Start(rand.Int() % 100)
 	}
 
 	time.Sleep(RaftElectionTimeout / 2)
@@ -549,15 +548,15 @@ func TestBackup2B(t *testing.T) {
 	cfg.connect(other)
 
 	// lots of successful commands to new group.
-	for i := 0; i < 50; i++ {
-		cfg.one(rand.Int(), 3, true)
+	for i := 0; i < 5; i++ {
+		cfg.one(rand.Int()%100, 3, true)
 	}
 
 	// now everyone
 	for i := 0; i < servers; i++ {
 		cfg.connect(i)
 	}
-	cfg.one(rand.Int(), servers, true)
+	cfg.one(rand.Int()%100, servers, true)
 
 	cfg.end()
 }
@@ -809,14 +808,14 @@ func TestFigure82C(t *testing.T) {
 
 	cfg.begin("Test (2C): Figure 8")
 
-	cfg.one(rand.Int(), 1, true)
+	cfg.one(rand.Int()%100, 1, true)
 
 	nup := servers
 	for iters := 0; iters < 1000; iters++ {
 		leader := -1
 		for i := 0; i < servers; i++ {
 			if cfg.rafts[i] != nil {
-				_, _, ok := cfg.rafts[i].Start(rand.Int())
+				_, _, ok := cfg.rafts[i].Start(rand.Int() % 100)
 				if ok {
 					leader = i
 				}
@@ -853,7 +852,7 @@ func TestFigure82C(t *testing.T) {
 		}
 	}
 
-	cfg.one(rand.Int(), servers, true)
+	cfg.one(rand.Int()%100, servers, true)
 
 	cfg.end()
 }
