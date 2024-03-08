@@ -132,6 +132,7 @@ def main(
 
         task_progress = Progress(
             TextColumn("[progress.description]{task.description}"),
+            SpinnerColumn(),
             BarColumn(),
             TextColumn("{task.completed}/{task.total}"),
         )

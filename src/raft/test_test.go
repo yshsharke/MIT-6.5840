@@ -505,7 +505,7 @@ func TestBackup2B(t *testing.T) {
 	cfg.disconnect((leader1 + 4) % servers)
 
 	// submit lots of commands that won't commit
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 50; i++ {
 		cfg.rafts[leader1].Start(rand.Int() % 100)
 	}
 
@@ -520,7 +520,7 @@ func TestBackup2B(t *testing.T) {
 	cfg.connect((leader1 + 4) % servers)
 
 	// lots of successful commands to new group.
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 50; i++ {
 		cfg.one(rand.Int()%100, 3, true)
 	}
 
@@ -533,7 +533,7 @@ func TestBackup2B(t *testing.T) {
 	cfg.disconnect(other)
 
 	// lots more commands that won't commit
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 50; i++ {
 		cfg.rafts[leader2].Start(rand.Int() % 100)
 	}
 
@@ -548,7 +548,7 @@ func TestBackup2B(t *testing.T) {
 	cfg.connect(other)
 
 	// lots of successful commands to new group.
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 50; i++ {
 		cfg.one(rand.Int()%100, 3, true)
 	}
 
@@ -893,7 +893,7 @@ func TestFigure8Unreliable2C(t *testing.T) {
 
 	cfg.begin("Test (2C): Figure 8 (unreliable)")
 
-	cfg.one(rand.Int()%10000, 1, true)
+	cfg.one(rand.Int()%100, 1, true)
 
 	nup := servers
 	for iters := 0; iters < 1000; iters++ {
@@ -902,7 +902,7 @@ func TestFigure8Unreliable2C(t *testing.T) {
 		}
 		leader := -1
 		for i := 0; i < servers; i++ {
-			_, _, ok := cfg.rafts[i].Start(rand.Int() % 10000)
+			_, _, ok := cfg.rafts[i].Start(rand.Int() % 100)
 			if ok && cfg.connected[i] {
 				leader = i
 			}
@@ -936,7 +936,7 @@ func TestFigure8Unreliable2C(t *testing.T) {
 		}
 	}
 
-	cfg.one(rand.Int()%10000, servers, true)
+	cfg.one(rand.Int()%100, servers, true)
 
 	cfg.end()
 }
@@ -1104,7 +1104,7 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 
 	cfg.begin(name)
 
-	cfg.one(rand.Int(), servers, true)
+	cfg.one(rand.Int()%100, servers, true)
 	leader1 := cfg.checkOneLeader()
 
 	for i := 0; i < iters; i++ {
@@ -1127,7 +1127,7 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 		// perhaps send enough to get a snapshot
 		nn := (SnapShotInterval / 2) + (rand.Int() % SnapShotInterval)
 		for i := 0; i < nn; i++ {
-			cfg.rafts[sender].Start(rand.Int())
+			cfg.rafts[sender].Start(rand.Int() % 100)
 		}
 
 		// let applier threads catch up with the Start()'s
@@ -1135,7 +1135,7 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 			// make sure all followers have caught up, so that
 			// an InstallSnapshot RPC isn't required for
 			// TestSnapshotBasic2D().
-			cfg.one(rand.Int(), servers, true)
+			cfg.one(rand.Int()%100, servers, true)
 		} else {
 			cfg.one(rand.Int(), servers-1, true)
 		}

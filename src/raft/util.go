@@ -22,6 +22,7 @@ const (
 	dKill     logTopic = "KILL"
 	dApply    logTopic = "APPL"
 	dPersist  logTopic = "PSST"
+	dSnapshot logTopic = "SNAP"
 	dDebug    logTopic = "DBUG"
 )
 

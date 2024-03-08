@@ -16,6 +16,7 @@ TOPICS = {
     "KILL": "red",
     "APPL": "purple",
     "PSST": "wheat4",
+    "SNAP": "hot_pink",
     "DBUG": "white"
 }
 
