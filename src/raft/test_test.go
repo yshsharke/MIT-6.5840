@@ -1117,11 +1117,11 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 
 		if disconnect {
 			cfg.disconnect(victim)
-			cfg.one(rand.Int(), servers-1, true)
+			cfg.one(rand.Int()%100, servers-1, true)
 		}
 		if crash {
 			cfg.crash1(victim)
-			cfg.one(rand.Int(), servers-1, true)
+			cfg.one(rand.Int()%100, servers-1, true)
 		}
 
 		// perhaps send enough to get a snapshot
@@ -1137,7 +1137,7 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 			// TestSnapshotBasic2D().
 			cfg.one(rand.Int()%100, servers, true)
 		} else {
-			cfg.one(rand.Int(), servers-1, true)
+			cfg.one(rand.Int()%100, servers-1, true)
 		}
 
 		if cfg.LogSize() >= MAXLOGSIZE {
@@ -1147,13 +1147,13 @@ func snapcommon(t *testing.T, name string, disconnect bool, reliable bool, crash
 			// reconnect a follower, who maybe behind and
 			// needs to rceive a snapshot to catch up.
 			cfg.connect(victim)
-			cfg.one(rand.Int(), servers, true)
+			cfg.one(rand.Int()%100, servers, true)
 			leader1 = cfg.checkOneLeader()
 		}
 		if crash {
 			cfg.start1(victim, cfg.applierSnap)
 			cfg.connect(victim)
-			cfg.one(rand.Int(), servers, true)
+			cfg.one(rand.Int()%100, servers, true)
 			leader1 = cfg.checkOneLeader()
 		}
 	}
@@ -1192,16 +1192,16 @@ func TestSnapshotAllCrash2D(t *testing.T) {
 
 	cfg.begin("Test (2D): crash and restart all servers")
 
-	cfg.one(rand.Int(), servers, true)
+	cfg.one(rand.Int()%100, servers, true)
 
 	for i := 0; i < iters; i++ {
 		// perhaps enough to get a snapshot
 		nn := (SnapShotInterval / 2) + (rand.Int() % SnapShotInterval)
 		for i := 0; i < nn; i++ {
-			cfg.one(rand.Int(), servers, true)
+			cfg.one(rand.Int()%100, servers, true)
 		}
 
-		index1 := cfg.one(rand.Int(), servers, true)
+		index1 := cfg.one(rand.Int()%100, servers, true)
 
 		// crash all
 		for i := 0; i < servers; i++ {
@@ -1214,7 +1214,7 @@ func TestSnapshotAllCrash2D(t *testing.T) {
 			cfg.connect(i)
 		}
 
-		index2 := cfg.one(rand.Int(), servers, true)
+		index2 := cfg.one(rand.Int()%100, servers, true)
 		if index2 < index1+1 {
 			t.Fatalf("index decreased from %v to %v", index1, index2)
 		}
@@ -1230,12 +1230,12 @@ func TestSnapshotInit2D(t *testing.T) {
 	defer cfg.cleanup()
 
 	cfg.begin("Test (2D): snapshot initialization after crash")
-	cfg.one(rand.Int(), servers, true)
+	cfg.one(rand.Int()%100, servers, true)
 
 	// enough ops to make a snapshot
 	nn := SnapShotInterval + 1
 	for i := 0; i < nn; i++ {
-		cfg.one(rand.Int(), servers, true)
+		cfg.one(rand.Int()%100, servers, true)
 	}
 
 	// crash all
@@ -1250,7 +1250,7 @@ func TestSnapshotInit2D(t *testing.T) {
 	}
 
 	// a single op, to get something to be written back to persistent storage.
-	cfg.one(rand.Int(), servers, true)
+	cfg.one(rand.Int()%100, servers, true)
 
 	// crash all
 	for i := 0; i < servers; i++ {
@@ -1264,6 +1264,6 @@ func TestSnapshotInit2D(t *testing.T) {
 	}
 
 	// do another op to trigger potential bug
-	cfg.one(rand.Int(), servers, true)
+	cfg.one(rand.Int()%100, servers, true)
 	cfg.end()
 }
