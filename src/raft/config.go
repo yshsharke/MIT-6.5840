@@ -610,6 +610,10 @@ func (cfg *config) one(cmd interface{}, expectedServers int, retry bool) int {
 // e.g. cfg.begin("Test (2B): RPC counts aren't too high")
 func (cfg *config) begin(description string) {
 	fmt.Printf("%s ...\n", description)
+	fmt.Printf("goroutine: %d\n", runtime.NumGoroutine())
+	//stacks := make([]byte, 8192)
+	//length := runtime.Stack(stacks, true)
+	//fmt.Println(string(stacks[:length]))
 	cfg.t0 = time.Now()
 	cfg.rpcs0 = cfg.rpcTotal()
 	cfg.bytes0 = cfg.bytesTotal()
@@ -633,7 +637,8 @@ func (cfg *config) end() {
 		cfg.mu.Unlock()
 
 		fmt.Printf("  ... Passed --")
-		fmt.Printf("  %4.1f  %d %4d %7d %4d\n", t, npeers, nrpc, nbytes, ncmds)
+		fmt.Printf("  %4.1f  %d %4d %7d %4d %d\n", t, npeers, nrpc, nbytes, ncmds, runtime.NumGoroutine())
+		//time.Sleep(5 * time.Second)
 	}
 }
 

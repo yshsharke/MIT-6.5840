@@ -7,3 +7,6 @@ api.key
 
 /src/raft/output
 /src/raft/env.sh
+
+/src/kvraft/output
+/src/kvraft/env.sh
