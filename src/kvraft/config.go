@@ -398,6 +398,7 @@ func (cfg *config) rpcTotal() int {
 // e.g. cfg.begin("Test (2B): RPC counts aren't too high")
 func (cfg *config) begin(description string) {
 	fmt.Printf("%s ...\n", description)
+	fmt.Printf("goroutine: %d\n", runtime.NumGoroutine())
 	cfg.t0 = time.Now()
 	cfg.rpcs0 = cfg.rpcTotal()
 	atomic.StoreInt32(&cfg.ops, 0)
@@ -420,6 +421,6 @@ func (cfg *config) end() {
 		ops := atomic.LoadInt32(&cfg.ops)  //  number of clerk get/put/append calls
 
 		fmt.Printf("  ... Passed --")
-		fmt.Printf("  %4.1f  %d %5d %4d\n", t, npeers, nrpc, ops)
+		fmt.Printf("  %4.1f  %d %5d %4d %d\n", t, npeers, nrpc, ops, runtime.NumGoroutine())
 	}
 }

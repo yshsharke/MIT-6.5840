@@ -199,9 +199,8 @@ type InstallSnapshotReply struct {
 // InstallSnapshot RPC handler.
 func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapshotReply) {
 	DPrintf(dSnapshot, "S%d <- S%d Snap T%d LLI%d LLT%d\n", rf.me, args.LeaderId, args.Term, args.LastIncludedIndex, args.LastIncludedTerm)
-	rf.mu.Lock()
-	defer rf.mu.Unlock()
 
+	rf.mu.Lock()
 	if args.Term > rf.currentTerm {
 		DPrintf(dTerm, "S%d update T%d to T%d\n", rf.me, rf.currentTerm, args.Term)
 		rf.currentTerm = args.Term
@@ -215,6 +214,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 		reply.Success = false
 		reply.Term = rf.currentTerm
 		DPrintf(dTerm, "S%d T%d ignore T%d snapshot\n", rf.me, rf.currentTerm, args.Term)
+		rf.mu.Unlock()
 		return
 	}
 
@@ -222,6 +222,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 		reply.Success = true
 		reply.Term = rf.currentTerm
 		DPrintf(dSnapshot, "S%d LLI%d ignore LLI%d\n", rf.me, rf.getLogicalIndex(0), args.LastIncludedIndex)
+		rf.mu.Unlock()
 		return
 	}
 
@@ -236,6 +237,7 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 	rf.log[0].Cmd = nil
 	rf.log[0].Term = args.LastIncludedTerm // Log[0].Term indicates last includedTerm of the last snapshot.
 	rf.indexOffset = args.LastIncludedIndex
+	DPrintf(dDebug, "S%d IO to %d\n", rf.me, rf.indexOffset)
 	rf.commitIndex = args.LastIncludedIndex
 	rf.lastApplied = args.LastIncludedIndex
 	rf.persist(args.Data)
@@ -247,8 +249,23 @@ func (rf *Raft) InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapsho
 		SnapshotIndex: args.LastIncludedIndex,
 	}
 	DPrintf(dApply, "S%d apply snap T%d LLI%d LLT%d\n", rf.me, args.Term, args.LastIncludedIndex, args.LastIncludedTerm)
+	rf.mu.Unlock()
+
 	rf.applyCh <- applyMsg
 	reply.Success = true
+}
+
+func (rf *Raft) SyncSnapshot(index int, term int, snapshot []byte) {
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+	if rf.getLogicalIndex(0) != index {
+		return
+	} else {
+		rf.commitIndex = index
+		rf.lastApplied = index
+		rf.persist(snapshot)
+		return
+	}
 }
 
 // RequestVote RPC arguments structure.
@@ -833,10 +850,10 @@ func (rf *Raft) applier() {
 				rf.mu.Unlock()
 				break
 			}
-			rf.lastApplied++
 			if rf.getSliceIndex(rf.lastApplied) < 0 {
-				DPrintf(dTest, "S%d lastApplied=%d sliceIndex=%d\n", rf.me, rf.lastApplied, rf.getSliceIndex(rf.lastApplied))
+				break
 			}
+			rf.lastApplied++
 			applyMsg := ApplyMsg{CommandValid: true, Command: rf.log[rf.getSliceIndex(rf.lastApplied)].Cmd, CommandIndex: rf.lastApplied}
 			DPrintf(dApply, "S%d apply %v at %d\n", rf.me, applyMsg.Command, applyMsg.CommandIndex)
 			rf.mu.Unlock()

@@ -7,6 +7,11 @@ from rich.console import Console
 
 TOPICS = {
     "TEST": "white",
+    "CLNT": "bright_black",
+    "SEVR": "cyan",
+    "MACH": "orange_red1",
+    "DBUG": "white",
+
     "TIMR": "bright_black",
     "VOTE": "cyan",
     "LEAD": "green",
@@ -17,7 +22,6 @@ TOPICS = {
     "APPL": "purple",
     "PSST": "wheat4",
     "SNAP": "hot_pink",
-    "DBUG": "white"
 }
 
 def list_topics(value: Optional[str]):
