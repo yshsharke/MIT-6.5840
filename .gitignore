@@ -10,3 +10,6 @@ api.key
 
 /src/kvraft/output
 /src/kvraft/env.sh
+
+/src/shardctrler/output
+/src/shardctrler/env.sh

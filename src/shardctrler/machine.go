@@ -68,8 +68,6 @@ func reassign(shards [10]int, groups map[int][]string) [10]int {
 			}
 		}
 	}
-
-	return shards
 }
 
 func (sc *SCMachine) Join(servers map[int][]string) Err {
