@@ -1,5 +1,11 @@
 package shardctrler
 
+import (
+	"fmt"
+	"log"
+	"time"
+)
+
 //
 // Shard controler: assigns shards to replication groups.
 //
@@ -29,45 +35,99 @@ type Config struct {
 }
 
 const (
-	OK = "OK"
+	OK             = "OK"
+	ErrWrongLeader = "ErrWrongLeader"
+	ErrInvalidOp   = "ErrInvalidOp"
+	ErrOverWritten = "ErrOverWritten"
+	ErrTimeout     = "ErrTimeout"
 )
 
 type Err string
 
 type JoinArgs struct {
-	Servers map[int][]string // new GID -> servers mappings
+	ClientID int64
+	Seq      int64
+	Servers  map[int][]string // new GID -> servers mappings
 }
 
 type JoinReply struct {
-	WrongLeader bool
-	Err         Err
+	Err Err
 }
 
 type LeaveArgs struct {
-	GIDs []int
+	ClientID int64
+	Seq      int64
+	GIDs     []int
 }
 
 type LeaveReply struct {
-	WrongLeader bool
-	Err         Err
+	Err Err
 }
 
 type MoveArgs struct {
-	Shard int
-	GID   int
+	ClientID int64
+	Seq      int64
+	Shard    int
+	GID      int
 }
 
 type MoveReply struct {
-	WrongLeader bool
-	Err         Err
+	Err Err
 }
 
 type QueryArgs struct {
-	Num int // desired config number
+	ClientID int64
+	Seq      int64
+	Num      int // desired config number
 }
 
 type QueryReply struct {
-	WrongLeader bool
-	Err         Err
-	Config      Config
+	Err    Err
+	Config Config
+}
+
+type NotifyMsg struct {
+	Err      Err
+	Config   Config
+	ClientID int64
+	Seq      int64
+}
+
+type DuplicateEntry struct {
+	Seq    int64
+	Err    Err
+	Config Config
+}
+
+const RequestTimeout = 500 * time.Millisecond
+
+const Debug = true
+
+type logTopic string
+
+const (
+	dTest    logTopic = "TEST"
+	dDebug   logTopic = "DBUG"
+	dCtrler  logTopic = "CTRL"
+	dApplier logTopic = "APPL"
+	dMachine logTopic = "MACH"
+)
+
+var debugStart time.Time
+
+func init() {
+	debugStart = time.Now()
+
+	log.SetFlags(log.Flags() &^ (log.Ldate | log.Ltime))
+}
+
+func DPrintf(topic logTopic, format string, a ...interface{}) {
+	if Debug {
+		microseconds := time.Since(debugStart).Microseconds()
+		microseconds /= 100
+		prefix := fmt.Sprintf("%06d %v ", microseconds, string(topic))
+		format = prefix + format
+		log.Printf(format, a...)
+	}
+	return
 }
