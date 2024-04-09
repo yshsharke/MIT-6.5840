@@ -390,7 +390,7 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 		DPrintf(dFollower, "S%d LI%d < PLI%d Xlen%d", rf.me, rf.getLogicalIndex(len(rf.log)-1), args.PrevLogIndex, reply.Xlen)
 		return
 	}
-	// todo
+
 	if rf.log[rf.getSliceIndex(args.PrevLogIndex)].Term != args.PrevLogTerm {
 		reply.Term = rf.currentTerm
 		reply.Success = false
@@ -851,6 +851,7 @@ func (rf *Raft) applier() {
 				break
 			}
 			if rf.getSliceIndex(rf.lastApplied) < 0 {
+				rf.mu.Unlock()
 				break
 			}
 			rf.lastApplied++
