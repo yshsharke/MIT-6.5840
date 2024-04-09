@@ -127,7 +127,6 @@ func (kv *ShardKV) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 func (kv *ShardKV) Migrate(args *MigrateArgs, reply *MigrateReply) {
 	DPrintf(dConfig, "G%dS%d Mig %d\n", kv.gid, kv.me, args.Shard)
 	_, isLeader := kv.rf.GetState()
-	DPrintf(dDebug, "G%dS%d Get State Suc\n", kv.gid, kv.me)
 	if !isLeader {
 		reply.Err = ErrWrongLeader
 		DPrintf(dConfig, "G%dS%d Mig ErrLeader\n", kv.gid, kv.me)
@@ -171,11 +170,13 @@ func (kv *ShardKV) poller() {
 				for shard, gid := range kv.config.Shards {
 					if gid == kv.gid && config.Shards[shard] != kv.gid {
 						// Lose a shard.
+						DPrintf(dDebug, "G%dS%d Lose %d\n", kv.gid, kv.me, shard)
 						kv.reConfigWG.Add(1)
 						go kv.deleteShard(shard, config.Num)
 					}
-					if gid != kv.gid && config.Shards[shard] == kv.gid {
+					if gid != -1 && gid != kv.gid && config.Shards[shard] == kv.gid {
 						// Gain a shard.
+						DPrintf(dDebug, "G%dS%d Gain %d\n", kv.gid, kv.me, shard)
 						kv.reConfigWG.Add(1)
 						go kv.addShard(shard, config.Num, gid)
 					}
@@ -193,7 +194,7 @@ func (kv *ShardKV) poller() {
 			time.Sleep(time.Duration(30) * time.Millisecond)
 		}
 
-		time.Sleep(time.Duration(20) * time.Millisecond)
+		time.Sleep(time.Duration(100) * time.Millisecond)
 	}
 }
 
@@ -243,6 +244,8 @@ func (kv *ShardKV) addShard(shard int, configNum int, source int) {
 					// Wait for source to reconfig.
 					si--
 					time.Sleep(time.Duration(50) * time.Millisecond)
+				} else {
+					time.Sleep(time.Duration(10) * time.Millisecond)
 				}
 				// time.Sleep(time.Duration(50) * time.Millisecond)
 			}
@@ -391,11 +394,17 @@ func (kv *ShardKV) applier() {
 
 				if cfg.CfgType == "Del" {
 					kv.shards[cfg.Shard] = Unavailable
+					kv.config.Shards[cfg.Shard] = -1
 					DPrintf(dConfig, "G%dA%d Del %d\n", kv.gid, kv.me, cfg.Shard)
 				} else if cfg.CfgType == "Add" {
 					if kv.shards[cfg.Shard] == Unavailable {
-						kv.machine.SetShard(cfg.Shard, cfg.Data)
+						newData := make(map[string]string)
+						for key, value := range cfg.Data {
+							newData[key] = value
+						}
+						kv.machine.SetShard(cfg.Shard, newData)
 						kv.shards[cfg.Shard] = Available
+						kv.config.Shards[cfg.Shard] = kv.gid
 						for key, value := range cfg.DuplicateTable {
 							if _, ok := kv.duplicateTable[key]; !ok {
 								kv.duplicateTable[key] = value
@@ -407,6 +416,13 @@ func (kv *ShardKV) applier() {
 					}
 				} else if cfg.CfgType == "Ack" {
 					kv.config = cfg.Config
+					for shard, gid := range kv.config.Shards {
+						if gid == kv.gid {
+							kv.shards[shard] = Available
+						} else {
+							kv.shards[shard] = Unavailable
+						}
+					}
 					DPrintf(dConfig, "G%dA%d Ack %d\n", kv.gid, kv.me, cfg.Num)
 				}
 
@@ -562,12 +578,8 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 	kv.duplicateTable = make(map[int64]DuplicateEntry)
 	kv.clerk = shardctrler.MakeClerk(ctrlers)
 	kv.config = shardctrler.Config{Num: 0}
-	for shard, gid := range kv.config.Shards {
-		if gid == kv.gid {
-			kv.shards[shard] = Available
-		} else {
-			kv.shards[shard] = Unavailable
-		}
+	for shard, _ := range kv.config.Shards {
+		kv.config.Shards[shard] = -1
 	}
 
 	// Use something like this to talk to the shardctrler:
@@ -578,6 +590,14 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 
 	DPrintf(dServer, "G%dS%d Start Max %d\n", kv.gid, kv.me, kv.maxraftstate)
 	kv.installSnapshot(kv.persister.ReadSnapshot())
+
+	for shard, gid := range kv.config.Shards {
+		if gid == kv.gid {
+			kv.shards[shard] = Available
+		} else {
+			kv.shards[shard] = Unavailable
+		}
+	}
 
 	go kv.applier()
 
