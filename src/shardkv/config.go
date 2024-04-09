@@ -363,7 +363,7 @@ func make_config(t *testing.T, n int, unreliable bool, maxraftstate int) *config
 	for gi := 0; gi < cfg.ngroups; gi++ {
 		gg := &group{}
 		cfg.groups[gi] = gg
-		gg.gid = 100 + gi
+		gg.gid = gi
 		gg.servers = make([]*ShardKV, cfg.n)
 		gg.saved = make([]*raft.Persister, cfg.n)
 		gg.endnames = make([][]string, cfg.n)

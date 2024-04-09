@@ -38,6 +38,8 @@ type Clerk struct {
 	config   shardctrler.Config
 	make_end func(string) *labrpc.ClientEnd
 	// You will have to modify this struct.
+	clientID int64
+	seq      int64
 }
 
 // the tester calls MakeClerk.
@@ -52,6 +54,7 @@ func MakeClerk(ctrlers []*labrpc.ClientEnd, make_end func(string) *labrpc.Client
 	ck.sm = shardctrler.MakeClerk(ctrlers)
 	ck.make_end = make_end
 	// You'll have to add code here.
+	ck.clientID = nrand() % 1000000
 	return ck
 }
 
@@ -60,8 +63,11 @@ func MakeClerk(ctrlers []*labrpc.ClientEnd, make_end func(string) *labrpc.Client
 // keeps trying forever in the face of all other errors.
 // You will have to modify this function.
 func (ck *Clerk) Get(key string) string {
+	ck.seq++
 	args := GetArgs{}
 	args.Key = key
+	args.ClientID = ck.clientID
+	args.Seq = ck.seq
 
 	for {
 		shard := key2shard(key)
@@ -79,6 +85,9 @@ func (ck *Clerk) Get(key string) string {
 					break
 				}
 				// ... not ok, or ErrWrongLeader
+				if ok && (reply.Err == ErrOverWritten) {
+					si--
+				}
 			}
 		}
 		time.Sleep(100 * time.Millisecond)
@@ -92,11 +101,13 @@ func (ck *Clerk) Get(key string) string {
 // shared by Put and Append.
 // You will have to modify this function.
 func (ck *Clerk) PutAppend(key string, value string, op string) {
+	ck.seq++
 	args := PutAppendArgs{}
 	args.Key = key
 	args.Value = value
 	args.Op = op
-
+	args.ClientID = ck.clientID
+	args.Seq = ck.seq
 
 	for {
 		shard := key2shard(key)
@@ -113,6 +124,9 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 					break
 				}
 				// ... not ok, or ErrWrongLeader
+				if ok && (reply.Err == ErrOverWritten) {
+					si--
+				}
 			}
 		}
 		time.Sleep(100 * time.Millisecond)

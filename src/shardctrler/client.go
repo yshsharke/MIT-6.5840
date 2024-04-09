@@ -49,6 +49,7 @@ func (ck *Clerk) Query(num int) Config {
 		} else if reply.Err == ErrOverWritten {
 			continue
 		} else {
+			DPrintf(dCtrler, "Query %d:%v\n", num, reply.Config)
 			return reply.Config
 		}
 	}
@@ -72,6 +73,7 @@ func (ck *Clerk) Join(servers map[int][]string) {
 		} else if reply.Err == ErrOverWritten {
 			continue
 		} else {
+			DPrintf(dCtrler, "Join %v\n", servers)
 			return
 		}
 	}
@@ -95,6 +97,7 @@ func (ck *Clerk) Leave(gids []int) {
 		} else if reply.Err == ErrOverWritten {
 			continue
 		} else {
+			DPrintf(dCtrler, "Leave %v\n", gids)
 			return
 		}
 	}
@@ -119,6 +122,7 @@ func (ck *Clerk) Move(shard int, gid int) {
 		} else if reply.Err == ErrOverWritten {
 			continue
 		} else {
+			DPrintf(dCtrler, "Move %d->%d\n", shard, gid)
 			return
 		}
 	}

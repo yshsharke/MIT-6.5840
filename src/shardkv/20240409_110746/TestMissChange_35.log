@@ -1,0 +1,1522 @@
+Test: servers miss configuration changes...
+000008 SEVR G0S0 Start Max 1000
+000009 SEVR G0S1 Start Max 1000
+000010 SEVR G0S2 Start Max 1000
+000011 SEVR G1S0 Start Max 1000
+000012 SEVR G1S1 Start Max 1000
+000013 SEVR G1S2 Start Max 1000
+000014 SEVR G2S0 Start Max 1000
+000015 SEVR G2S1 Start Max 1000
+000017 SEVR G2S2 Start Max 1000
+003006 CTRL Join map[0:[server-0-0 server-0-1 server-0-2]]
+003007 CTRL Query 1:{0 [0 0 0 0 0 0 0 0 0 0] map[]}
+003010 CTRL Query 1:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+003010 DCFG G0S2 Recfg 1
+003019 DCFG G0A2 Ack 1
+003048 CTRL Query 1:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+003048 DCFG G1S1 Recfg 1
+003054 DCFG G1A1 Ack 1
+003235 CTRL Query 1:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+003235 DCFG G2S1 Recfg 1
+003267 DCFG G2A1 Ack 1
+003733 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+003780 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+003948 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+003963 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+003997 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+004033 CTRL Query -1:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+004038 DCFG G0A1 Ack 1
+004047 DCFG G0A0 Ack 1
+004060 DCFG G1A0 Ack 1
+004062 DCFG G1A2 Ack 1
+004063 SEVR G0S2 980404:1(2) Put {0:hv_ShN7ipkauYrdyBoej}
+004067 APPL G0A2 980404:1(2) Put {0:hv_ShN7ipkauYrdyBoej} OK
+004075 SEVR G0S2 980404:2(3) Put {1:DtGad3hh5uRBT1BpxTBL}
+004080 APPL G0A1 980404:1(2) Put {0:hv_ShN7ipkauYrdyBoej} OK
+004082 APPL G0A2 980404:2(3) Put {1:DtGad3hh5uRBT1BpxTBL} OK
+004083 APPL G0A0 980404:1(2) Put {0:hv_ShN7ipkauYrdyBoej} OK
+004089 SEVR G0S2 980404:3(4) Put {2:uGZ-gLgPwI5WKs-_PN2z}
+004096 APPL G0A2 980404:3(4) Put {2:uGZ-gLgPwI5WKs-_PN2z} OK
+004102 SEVR G0S2 980404:4(5) Put {3:bH2VnVkCNJDj3SFgUrPG}
+004107 APPL G0A1 980404:2(3) Put {1:DtGad3hh5uRBT1BpxTBL} OK
+004107 APPL G0A1 980404:3(4) Put {2:uGZ-gLgPwI5WKs-_PN2z} OK
+004107 APPL G0A0 980404:2(3) Put {1:DtGad3hh5uRBT1BpxTBL} OK
+004107 APPL G0A2 980404:4(5) Put {3:bH2VnVkCNJDj3SFgUrPG} OK
+004113 APPL G0A0 980404:3(4) Put {2:uGZ-gLgPwI5WKs-_PN2z} OK
+004113 SEVR G0S2 980404:5(6) Put {4:4Gngqf0rNKLVo8IQI68b}
+004117 APPL G0A2 980404:5(6) Put {4:4Gngqf0rNKLVo8IQI68b} OK
+004122 APPL G0A1 980404:4(5) Put {3:bH2VnVkCNJDj3SFgUrPG} OK
+004122 APPL G0A0 980404:4(5) Put {3:bH2VnVkCNJDj3SFgUrPG} OK
+004124 SEVR G0S2 980404:6(7) Put {5:y2apaP3-9H6e1dMnOz6y}
+004130 APPL G0A2 980404:6(7) Put {5:y2apaP3-9H6e1dMnOz6y} OK
+004131 APPL G0A1 980404:5(6) Put {4:4Gngqf0rNKLVo8IQI68b} OK
+004131 APPL G0A0 980404:5(6) Put {4:4Gngqf0rNKLVo8IQI68b} OK
+004142 SEVR G0S2 980404:7(8) Put {6:I4n_U6bF_q8IQdUqHQ1o}
+004149 APPL G0A0 980404:6(7) Put {5:y2apaP3-9H6e1dMnOz6y} OK
+004150 APPL G0A1 980404:6(7) Put {5:y2apaP3-9H6e1dMnOz6y} OK
+004150 APPL G0A2 980404:7(8) Put {6:I4n_U6bF_q8IQdUqHQ1o} OK
+004157 SEVR G0S2 980404:8(9) Put {7:ppFKiSmheAwO5u5anmuV}
+004157 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+004171 APPL G0A2 980404:8(9) Put {7:ppFKiSmheAwO5u5anmuV} OK
+004175 APPL G0A0 980404:7(8) Put {6:I4n_U6bF_q8IQdUqHQ1o} OK
+004184 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+004187 SEVR G0S2 980404:9(10) Put {8:3jEinR3ZVSzlB3iBZX1q}
+004187 APPL G0A1 980404:7(8) Put {6:I4n_U6bF_q8IQdUqHQ1o} OK
+004191 APPL G0A1 980404:8(9) Put {7:ppFKiSmheAwO5u5anmuV} OK
+004192 APPL G0A2 980404:9(10) Put {8:3jEinR3ZVSzlB3iBZX1q} OK
+004194 APPL G0A0 980404:8(9) Put {7:ppFKiSmheAwO5u5anmuV} OK
+004199 SEVR G0S2 980404:10(11) Put {9:BfOoxN0JEtYHMF_-Ari2}
+004204 APPL G0A2 980404:10(11) Put {9:BfOoxN0JEtYHMF_-Ari2} OK
+004213 SEVR G0S2 980404:11(12) Get 0
+004218 APPL G0A2 980404:11(12) Get {0:hv_ShN7ipkauYrdyBoej} OK
+004218 APPL G0A0 980404:9(10) Put {8:3jEinR3ZVSzlB3iBZX1q} OK
+004219 APPL G0A1 980404:9(10) Put {8:3jEinR3ZVSzlB3iBZX1q} OK
+004219 APPL G0A1 980404:10(11) Put {9:BfOoxN0JEtYHMF_-Ari2} OK
+004223 APPL G0A0 980404:10(11) Put {9:BfOoxN0JEtYHMF_-Ari2} OK
+004225 SEVR G0S2 980404:12(13) Get 1
+004229 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+004237 APPL G0A2 980404:12(13) Get {1:DtGad3hh5uRBT1BpxTBL} OK
+004238 APPL G0A0 980404:11(12) Get {0:hv_ShN7ipkauYrdyBoej} OK
+004238 APPL G0A1 980404:11(12) Get {0:hv_ShN7ipkauYrdyBoej} OK
+004249 SEVR G0S2 980404:13(14) Get 2
+004253 APPL G0A1 980404:12(13) Get {1:DtGad3hh5uRBT1BpxTBL} OK
+004253 APPL G0A2 980404:13(14) Get {2:uGZ-gLgPwI5WKs-_PN2z} OK
+004255 APPL G0A0 980404:12(13) Get {1:DtGad3hh5uRBT1BpxTBL} OK
+004265 DCFG G2A0 Ack 1
+004265 DCFG G2A2 Ack 1
+004265 SEVR G0S2 980404:14(15) Get 3
+004268 APPL G0A2 980404:14(15) Get {3:bH2VnVkCNJDj3SFgUrPG} OK
+004274 APPL G0A0 980404:13(14) Get {2:uGZ-gLgPwI5WKs-_PN2z} OK
+004275 APPL G0A1 980404:13(14) Get {2:uGZ-gLgPwI5WKs-_PN2z} OK
+004276 SEVR G0S2 980404:15(16) Get 4
+004281 APPL G0A2 980404:15(16) Get {4:4Gngqf0rNKLVo8IQI68b} OK
+004288 SEVR G0S2 980404:16(17) Get 5
+004289 APPL G0A0 980404:14(15) Get {3:bH2VnVkCNJDj3SFgUrPG} OK
+004294 APPL G0A2 980404:16(17) Get {5:y2apaP3-9H6e1dMnOz6y} OK
+004366 APPL G0A1 980404:14(15) Get {3:bH2VnVkCNJDj3SFgUrPG} OK
+004366 APPL G0A1 980404:15(16) Get {4:4Gngqf0rNKLVo8IQI68b} OK
+004384 SEVR G0S2 980404:17(18) Get 6
+004410 APPL G0A0 980404:15(16) Get {4:4Gngqf0rNKLVo8IQI68b} OK
+004411 APPL G0A2 980404:17(18) Get {6:I4n_U6bF_q8IQdUqHQ1o} OK
+004412 APPL G0A0 980404:16(17) Get {5:y2apaP3-9H6e1dMnOz6y} OK
+004419 SEVR G0S2 980404:18(19) Get 7
+004425 APPL G0A1 980404:16(17) Get {5:y2apaP3-9H6e1dMnOz6y} OK
+004426 APPL G0A1 980404:17(18) Get {6:I4n_U6bF_q8IQdUqHQ1o} OK
+004426 APPL G0A0 980404:17(18) Get {6:I4n_U6bF_q8IQdUqHQ1o} OK
+004426 APPL G0A2 980404:18(19) Get {7:ppFKiSmheAwO5u5anmuV} OK
+004436 SEVR G0S2 980404:19(20) Get 8
+004437 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+004441 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+004441 APPL G0A1 980404:18(19) Get {7:ppFKiSmheAwO5u5anmuV} OK
+004442 APPL G0A2 980404:19(20) Get {8:3jEinR3ZVSzlB3iBZX1q} OK
+004450 SEVR G0S2 980404:20(21) Get 9
+004453 APPL G0A0 980404:18(19) Get {7:ppFKiSmheAwO5u5anmuV} OK
+004459 APPL G0A2 980404:20(21) Get {9:BfOoxN0JEtYHMF_-Ari2} OK
+004433 CTRL Query 2:{1 [0 0 0 0 0 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2]]}
+004459 APPL G0A0 980404:19(20) Get {8:3jEinR3ZVSzlB3iBZX1q} OK
+004460 APPL G0A1 980404:19(20) Get {8:3jEinR3ZVSzlB3iBZX1q} OK
+004469 CTRL Join map[1:[server-1-0 server-1-1 server-1-2]]
+004470 KILL G0S0 Killed
+004470 KILL G1S0 Killed
+004470 KILL G2S0 Killed
+004506 CTRL Join map[2:[server-2-0 server-2-1 server-2-2]]
+004514 CTRL Leave [1]
+004522 CTRL Leave [0]
+004677 CTRL Query 2:{2 [1 1 1 1 1 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2] 1:[server-1-0 server-1-1 server-1-2]]}
+004677 DCFG G0S2 Recfg 2
+004832 DCFG G0A2 Del 4
+004833 DCFG G0A2 Del 0
+004833 DCFG G0A2 Del 1
+004833 DCFG G0A2 Del 2
+004833 DCFG G0A2 Del 3
+004833 APPL G0A1 980404:20(21) Get {9:BfOoxN0JEtYHMF_-Ari2} OK
+004837 CTRL Query 2:{2 [1 1 1 1 1 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2] 1:[server-1-0 server-1-1 server-1-2]]}
+004837 DCFG G2S1 Recfg 2
+004838 CTRL Query 2:{2 [1 1 1 1 1 0 0 0 0 0] map[0:[server-0-0 server-0-1 server-0-2] 1:[server-1-0 server-1-1 server-1-2]]}
+004838 DCFG G1S1 Recfg 2
+004838 DCFG G1S1 Pull 1 From 0
+004839 DCFG G1S1 Pull 0 From 0
+004840 DCFG G1S1 Pull 3 From 0
+004840 DCFG G1S1 Pull 4 From 0
+004840 DCFG G1S1 Pull 2 From 0
+004844 DCFG G2A1 Ack 2
+005015 DCFG G1S1 Pull 2 From 0
+005018 DCFG G0S1 Mig 2
+005018 DBUG G0S1 Get State Suc
+005018 DCFG G0S1 Mig ErrLeader
+005020 DCFG G1S1 Pull 2 From 0
+005021 DCFG G0S2 Mig 2
+005022 DBUG G0S2 Get State Suc
+005022 DBUG G0S2 reply map[4:4Gngqf0rNKLVo8IQI68b]
+005023 DCFG G1S1 Pull 2 Suc
+005042 DCFG G1A1 Add 2
+005154 DCFG G1S1 Pull 3 From 0
+005156 DCFG G0S1 Mig 3
+005156 DBUG G0S1 Get State Suc
+005157 DCFG G0S1 Mig ErrLeader
+005158 DCFG G1S1 Pull 3 From 0
+005159 DCFG G0S2 Mig 3
+005159 DBUG G0S2 Get State Suc
+005159 DBUG G0S2 reply map[5:y2apaP3-9H6e1dMnOz6y]
+005161 DCFG G1S1 Pull 3 Suc
+005165 DCFG G1A1 Add 3
+005166 DCFG G1A2 Add 2
+005209 DCFG G0A2 Ack 2
+005209 DCFG G0A1 Del 4
+005209 DCFG G0A1 Del 0
+005209 DCFG G0A1 Del 1
+005209 DCFG G0A1 Del 2
+005209 DCFG G0A1 Del 3
+005231 SEVR G0S2 980404:21(28) Get 0
+005239 DCFG G0A1 Ack 2
+005240 APPL G0A2 980404:21(28) Get {0:hv_ShN7ipkauYrdyBoej} OK
+005402 SEVR G0S2 980404:22(29) Append {0:75rzbsr9XXsCEPHNGy88}
+005403 DCFG G1S1 Pull 1 From 0
+005404 DCFG G0S1 Mig 1
+005404 DBUG G0S1 Get State Suc
+005404 DCFG G0S1 Mig ErrLeader
+005405 DCFG G1S1 Pull 1 From 0
+005406 DCFG G0S2 Mig 1
+005406 DBUG G0S2 Get State Suc
+005406 DBUG G0S2 reply map[3:bH2VnVkCNJDj3SFgUrPG]
+005408 DCFG G1S1 Pull 1 Suc
+005412 DCFG G1S1 Pull 0 From 0
+005414 DCFG G0S1 Mig 0
+005414 DBUG G0S1 Get State Suc
+005414 DCFG G0S1 Mig ErrLeader
+005415 DCFG G1S1 Pull 0 From 0
+005416 DCFG G1A1 Add 1
+005417 DCFG G0S2 Mig 0
+005417 DCFG G1A2 Add 3
+005417 DBUG G0S2 Get State Suc
+005417 APPL G0A1 980404:21(28) Get {0:hv_ShN7ipkauYrdyBoej} OK
+005417 DBUG G0S2 reply map[2:uGZ-gLgPwI5WKs-_PN2z]
+005417 APPL G0A2 980404:22(29) Append {0:75rzbsr9XXsCEPHNGy88} OK
+005427 DCFG G1S1 Pull 0 Suc
+005435 DCFG G1A1 Add 0
+005435 DCFG G1A2 Add 1
+005495 DCFG G1S1 Pull 4 From 0
+005498 DCFG G0S1 Mig 4
+005498 DBUG G0S1 Get State Suc
+005498 DCFG G0S1 Mig ErrLeader
+005500 DCFG G1S1 Pull 4 From 0
+005502 DCFG G0S2 Mig 4
+005502 DBUG G0S2 Get State Suc
+005502 DBUG G0S2 reply map[6:I4n_U6bF_q8IQdUqHQ1o]
+005504 DCFG G1S1 Pull 4 Suc
+005510 DCFG G1A1 Add 4
+005511 DCFG G1A2 Add 0
+005581 CTRL Query 3:{3 [2 1 1 1 1 2 2 0 0 0] map[0:[server-0-0 server-0-1 server-0-2] 1:[server-1-0 server-1-1 server-1-2] 2:[server-2-0 server-2-1 server-2-2]]}
+005581 DCFG G2S1 Recfg 3
+005581 DCFG G2S1 Pull 6 From 0
+005586 DCFG G2S1 Pull 0 From 1
+005586 DCFG G2S1 Pull 5 From 0
+005825 DCFG G2S1 Pull 0 From 1
+005827 DCFG G1S1 Mig 0
+005828 DBUG G1S1 Get State Suc
+005828 DCFG G1S1 Mig ErrNum 3
+005865 DCFG G2A2 Ack 2
+005867 SEVR G0S2 980404:23(30) Get 1
+005874 APPL G0A2 980404:23(30) Get {1:DtGad3hh5uRBT1BpxTBL} OK
+005875 APPL G0A1 980404:22(29) Append {0:75rzbsr9XXsCEPHNGy88} OK
+005939 DCFG G2S1 Pull 5 From 0
+005940 DCFG G0S1 Mig 5
+005940 DBUG G0S1 Get State Suc
+005940 DCFG G0S1 Mig ErrLeader
+005942 DCFG G2S1 Pull 5 From 0
+005943 DCFG G0S2 Mig 5
+005943 DBUG G0S2 Get State Suc
+005943 DCFG G0S2 Mig ErrNum 3
+005945 CTRL Query 3:{3 [2 1 1 1 1 2 2 0 0 0] map[0:[server-0-0 server-0-1 server-0-2] 1:[server-1-0 server-1-1 server-1-2] 2:[server-2-0 server-2-1 server-2-2]]}
+005945 DCFG G0S2 Recfg 3
+005954 DCFG G0A2 Del 6
+005954 DCFG G0A2 Del 5
+005957 APPL G0A1 980404:23(30) Get {1:DtGad3hh5uRBT1BpxTBL} OK
+006017 DCFG G1A1 Ack 2
+006018 DCFG G1A2 Add 4
+006329 DCFG G2S1 Pull 6 From 0
+006331 DCFG G0S1 Mig 6
+006331 DBUG G0S1 Get State Suc
+006331 DCFG G0S1 Mig ErrLeader
+006333 DCFG G2S1 Pull 6 From 0
+006334 DCFG G0S2 Mig 6
+006334 DBUG G0S2 Get State Suc
+006334 DBUG G0S2 reply map[8:3jEinR3ZVSzlB3iBZX1q]
+006335 DCFG G2S1 Pull 6 Suc
+006338 DCFG G2S1 Pull 0 From 1
+006340 DCFG G1S1 Mig 0
+006340 DBUG G1S1 Get State Suc
+006340 DCFG G1S1 Mig ErrNum 3
+006342 DCFG G2A1 Add 6
+006448 DCFG G2S1 Pull 5 From 0
+006451 DCFG G0S2 Mig 5
+006452 DBUG G0S2 Get State Suc
+006452 DBUG G0S2 reply map[7:ppFKiSmheAwO5u5anmuV]
+006454 DCFG G2S1 Pull 5 Suc
+006455 DCFG G0A1 Del 6
+006455 DCFG G0A1 Del 5
+006457 DCFG G0A2 Ack 3
+006461 DCFG G2A1 Add 5
+006461 DCFG G2A2 Add 6
+006514 SEVR G0S2 980404:24(34) Append {1:aB_AKiaSrm950HX1jZ7U}
+006520 APPL G0A2 980404:24(34) Append {1:aB_AKiaSrm950HX1jZ7U} OK
+006522 DCFG G0A1 Ack 3
+006740 CTRL Query 3:{3 [2 1 1 1 1 2 2 0 0 0] map[0:[server-0-0 server-0-1 server-0-2] 1:[server-1-0 server-1-1 server-1-2] 2:[server-2-0 server-2-1 server-2-2]]}
+006740 DCFG G1S1 Recfg 3
+006748 DCFG G1A1 Del 0
+006748 DCFG G1A2 Ack 2
+006783 SEVR G0S1 980404:25 Key 2 Wrong Group
+006872 DCFG G2S1 Pull 0 From 1
+006874 DCFG G1S1 Mig 0
+006875 DBUG G1S1 Get State Suc
+006875 DBUG G1S1 reply map[2:uGZ-gLgPwI5WKs-_PN2z]
+006877 DCFG G2S1 Pull 0 Suc
+006883 DCFG G2A2 Add 5
+006883 DCFG G2A1 Add 0
+007187 CTRL Query 4:{4 [2 2 2 0 0 2 2 0 0 0] map[0:[server-0-0 server-0-1 server-0-2] 2:[server-2-0 server-2-1 server-2-2]]}
+007188 DCFG G0S2 Recfg 4
+007188 DCFG G0S2 Pull 4 From 1
+007189 DCFG G0S2 Pull 3 From 1
+007225 DCFG G0S2 Pull 4 From 1
+007227 DCFG G1S1 Mig 4
+007228 DBUG G1S1 Get State Suc
+007228 DCFG G1S1 Mig ErrNum 4
+007243 DCFG G0S2 Pull 3 From 1
+007245 DCFG G1S1 Mig 3
+007245 DBUG G1S1 Get State Suc
+007245 DCFG G1S1 Mig ErrNum 4
+007250 DCFG G1A1 Ack 3
+007250 DCFG G1A2 Del 0
+007390 DCFG G2A2 Add 0
+007391 DCFG G2A1 Ack 3
+007532 APPL G0A1 980404:24(34) Append {1:aB_AKiaSrm950HX1jZ7U} OK
+007734 DCFG G0S2 Pull 4 From 1
+007737 DCFG G1S1 Mig 4
+007737 DBUG G1S1 Get State Suc
+007737 DCFG G1S1 Mig ErrNum 4
+007748 DCFG G0S2 Pull 3 From 1
+007750 DCFG G1S1 Mig 3
+007750 DBUG G1S1 Get State Suc
+007750 DCFG G1S1 Mig ErrNum 4
+007795 CTRL Query -1:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+007963 CTRL Query 4:{4 [2 2 2 0 0 2 2 0 0 0] map[0:[server-0-0 server-0-1 server-0-2] 2:[server-2-0 server-2-1 server-2-2]]}
+007964 DCFG G1S1 Recfg 4
+008070 DCFG G1A2 Ack 3
+008070 DCFG G1A1 Del 4
+008071 DCFG G1A1 Del 1
+008071 DCFG G1A1 Del 2
+008071 DCFG G1A1 Del 3
+008113 CTRL Query 4:{4 [2 2 2 0 0 2 2 0 0 0] map[0:[server-0-0 server-0-1 server-0-2] 2:[server-2-0 server-2-1 server-2-2]]}
+008114 DCFG G2S1 Recfg 4
+008115 DCFG G2S1 Pull 2 From 1
+008116 DCFG G2S1 Pull 1 From 1
+008246 DCFG G0S2 Pull 4 From 1
+008249 DCFG G1S1 Mig 4
+008249 DBUG G1S1 Get State Suc
+008249 DBUG G1S1 reply map[6:I4n_U6bF_q8IQdUqHQ1o]
+008251 DCFG G0S2 Pull 4 Suc
+008257 DCFG G0S2 Pull 3 From 1
+008260 DCFG G1S1 Mig 3
+008260 DBUG G1S1 Get State Suc
+008260 DBUG G1S1 reply map[5:y2apaP3-9H6e1dMnOz6y]
+008261 DCFG G0A2 Add 4
+008261 DCFG G0S2 Pull 3 Suc
+008272 DCFG G0A2 Add 3
+008272 DCFG G0A1 Add 4
+008329 DCFG G2S1 Pull 2 From 1
+008332 DCFG G1S1 Mig 2
+008332 DBUG G1S1 Get State Suc
+008332 DBUG G1S1 reply map[4:4Gngqf0rNKLVo8IQI68b]
+008334 DCFG G2S1 Pull 2 Suc
+008342 DCFG G2A1 Add 2
+008342 DCFG G2A2 Ack 3
+008505 DCFG G2S1 Pull 1 From 1
+008508 DCFG G1S1 Mig 1
+008508 DBUG G1S1 Get State Suc
+008508 DBUG G1S1 reply map[3:bH2VnVkCNJDj3SFgUrPG]
+008509 DCFG G2S1 Pull 1 Suc
+008517 DCFG G2A1 Add 1
+008518 DCFG G2A2 Add 2
+008545 SEVR G2S1 980404:25(9) Get 2
+008551 DCFG G1A1 Ack 4
+008551 DCFG G1A2 Del 4
+008551 DCFG G1A2 Del 1
+008551 DCFG G1A2 Del 2
+008551 DCFG G1A2 Del 3
+008553 DCFG G2A2 Add 1
+008553 APPL G2A1 980404:25(9) Get {2:uGZ-gLgPwI5WKs-_PN2z} OK
+008788 DCFG G0A2 Ack 4
+008788 DCFG G0A1 Add 3
+009018 APPL G2A2 980404:25(9) Get {2:uGZ-gLgPwI5WKs-_PN2z} OK
+009019 DCFG G2A1 Ack 4
+009294 CTRL Query 5:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+009295 DCFG G1S1 Recfg 5
+009304 DCFG G1A1 Ack 5
+009306 DCFG G1A2 Ack 4
+009494 SEVR G2S1 980404:26(11) Append {2:8X0ikXkwkFII08aG6LBO}
+009498 APPL G2A1 980404:26(11) Append {2:8X0ikXkwkFII08aG6LBO} OK
+009501 DCFG G2A2 Ack 4
+009501 CTRL Query 5:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+009501 DCFG G0S2 Recfg 5
+009510 DCFG G0A1 Ack 4
+009522 SEVR G2S1 980404:27(12) Get 3
+009523 DCFG G0A2 Del 9
+009527 DCFG G0A1 Del 9
+009529 DCFG G0A2 Del 4
+009529 DCFG G0A2 Del 3
+009529 DCFG G0A2 Del 7
+009529 DCFG G0A2 Del 8
+009538 APPL G2A2 980404:26(11) Append {2:8X0ikXkwkFII08aG6LBO} OK
+009539 APPL G2A1 980404:27(12) Get {3:bH2VnVkCNJDj3SFgUrPG} OK
+009729 CTRL Query 5:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+009730 DCFG G2S1 Recfg 5
+009731 DCFG G2S1 Pull 9 From 0
+009731 DCFG G2S1 Pull 7 From 0
+009732 DCFG G2S1 Pull 4 From 0
+009732 DCFG G2S1 Pull 3 From 0
+009733 DCFG G2S1 Pull 8 From 0
+009945 SEVR G2S1 980404:28(13) Append {3:dfc76w5UIb2RK6Ml8Egi}
+009952 APPL G2A2 980404:27(12) Get {3:bH2VnVkCNJDj3SFgUrPG} OK
+009952 APPL G2A1 980404:28(13) Append {3:dfc76w5UIb2RK6Ml8Egi} OK
+010024 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+010030 DCFG G0A1 Del 4
+010030 DCFG G0A1 Del 3
+010030 DCFG G0A1 Del 7
+010030 DCFG G0A1 Del 8
+010031 DCFG G0A2 Ack 5
+010116 DCFG G2S1 Pull 7 From 0
+010118 DCFG G0S1 Mig 7
+010119 DBUG G0S1 Get State Suc
+010119 DCFG G0S1 Mig ErrLeader
+010120 DCFG G2S1 Pull 3 From 0
+010120 DCFG G2S1 Pull 7 From 0
+010121 DCFG G0S1 Mig 3
+010121 DBUG G0S1 Get State Suc
+010121 DCFG G0S1 Mig ErrLeader
+010122 DCFG G0S2 Mig 7
+010122 DBUG G0S2 Get State Suc
+010122 DBUG G0S2 reply map[9:BfOoxN0JEtYHMF_-Ari2]
+010123 DCFG G2S1 Pull 3 From 0
+010124 DCFG G0S2 Mig 3
+010124 DBUG G0S2 Get State Suc
+010125 DBUG G0S2 reply map[5:y2apaP3-9H6e1dMnOz6y]
+010125 DCFG G2S1 Pull 3 Suc
+010123 DCFG G2S1 Pull 7 Suc
+010139 DCFG G2A1 Add 3
+010140 DCFG G2A1 Add 7
+010139 APPL G2A2 980404:28(13) Append {3:dfc76w5UIb2RK6Ml8Egi} OK
+010140 DCFG G2A2 Add 3
+010240 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+010313 DCFG G1A2 Ack 5
+010409 SEVR G2S1 980404:29(16) Get 4
+010413 APPL G2A1 980404:29(16) Get {4:4Gngqf0rNKLVo8IQI68b} OK
+010415 DCFG G2A2 Add 7
+010535 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+010601 DCFG G2S1 Pull 8 From 0
+010601 DCFG G2S1 Pull 4 From 0
+010603 DCFG G0S1 Mig 8
+010603 DBUG G0S1 Get State Suc
+010603 DCFG G0S1 Mig ErrLeader
+010603 DCFG G0S1 Mig 4
+010604 DBUG G0S1 Get State Suc
+010604 DCFG G0S1 Mig ErrLeader
+010605 DCFG G2S1 Pull 8 From 0
+010606 DCFG G0S2 Mig 8
+010606 DBUG G0S2 Get State Suc
+010606 DBUG G0S2 reply map[0:hv_ShN7ipkauYrdyBoej75rzbsr9XXsCEPHNGy88]
+010607 DCFG G2S1 Pull 4 From 0
+010607 DCFG G2S1 Pull 8 Suc
+010610 DCFG G0S2 Mig 4
+010610 DBUG G0S2 Get State Suc
+010610 DBUG G0S2 reply map[6:I4n_U6bF_q8IQdUqHQ1o]
+010611 DCFG G2S1 Pull 4 Suc
+010615 DCFG G2A1 Add 8
+010616 APPL G2A2 980404:29(16) Get {4:4Gngqf0rNKLVo8IQI68b} OK
+010624 DCFG G2A1 Add 4
+010723 DCFG G2S1 Pull 9 From 0
+010725 DCFG G0S1 Mig 9
+010726 DBUG G0S1 Get State Suc
+010726 DCFG G0S1 Mig ErrLeader
+010727 DCFG G2S1 Pull 9 From 0
+010728 DCFG G0S2 Mig 9
+010728 DBUG G0S2 Get State Suc
+010728 DBUG G0S2 reply map[1:DtGad3hh5uRBT1BpxTBLaB_AKiaSrm950HX1jZ7U]
+010729 DCFG G2S1 Pull 9 Suc
+010737 DCFG G2A1 Add 9
+010739 DCFG G2A2 Add 8
+010739 DCFG G2A2 Add 4
+010753 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+010755 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+010810 SEVR G2S1 980404:30(20) Append {4:CIoBkjdqVxVBSpMIh4s5}
+010818 DCFG G2A2 Add 9
+010819 APPL G2A1 980404:30(20) Append {4:CIoBkjdqVxVBSpMIh4s5} OK
+010968 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+010970 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+011034 DCFG G0A1 Ack 5
+011173 SEVR G2S1 980404:31(21) Get 5
+011181 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+011187 APPL G2A1 980404:31(21) Get {5:y2apaP3-9H6e1dMnOz6y} OK
+011188 APPL G2A2 980404:30(20) Append {4:CIoBkjdqVxVBSpMIh4s5} OK
+011193 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+011252 DCFG G2A1 Ack 5
+011252 APPL G2A2 980404:31(21) Get {5:y2apaP3-9H6e1dMnOz6y} OK
+011402 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+011404 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+011472 SEVR G2S1 980404:32(23) Append {5:GUBKLdPNhWMzW9-eEAux}
+011481 APPL G2A1 980404:32(23) Append {5:GUBKLdPNhWMzW9-eEAux} OK
+011482 DCFG G2A2 Ack 5
+011621 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+011621 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+011845 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+011846 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+011931 SEVR G2S1 980404:33(24) Get 6
+011938 APPL G2A1 980404:33(24) Get {6:I4n_U6bF_q8IQdUqHQ1o} OK
+011940 APPL G2A2 980404:32(23) Append {5:GUBKLdPNhWMzW9-eEAux} OK
+011981 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012059 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012075 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012206 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012278 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012297 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012416 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012494 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012511 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012638 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012717 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012728 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012867 SEVR G2S1 980404:34(25) Append {6:w5S-FvecnxwKNOd3vHVB}
+012890 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012893 APPL G2A1 980404:34(25) Append {6:w5S-FvecnxwKNOd3vHVB} OK
+012893 APPL G2A2 980404:33(24) Get {6:I4n_U6bF_q8IQdUqHQ1o} OK
+012947 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+012959 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013101 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013168 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013169 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013326 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013388 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013389 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013543 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013604 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013612 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013761 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013809 SEVR G2S1 980404:35(26) Get 7
+013815 APPL G2A1 980404:35(26) Get {7:ppFKiSmheAwO5u5anmuV} OK
+013817 APPL G2A2 980404:34(25) Append {6:w5S-FvecnxwKNOd3vHVB} OK
+013826 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+013826 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014034 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014039 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014040 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014350 SEVR G2S1 980404:36(27) Append {7:1lCfq3ObZtzEpZoDSTYO}
+014353 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014355 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014355 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014356 APPL G2A2 980404:35(26) Get {7:ppFKiSmheAwO5u5anmuV} OK
+014357 APPL G2A1 980404:36(27) Append {7:1lCfq3ObZtzEpZoDSTYO} OK
+014591 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014593 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014594 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014811 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014813 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+014815 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015090 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015092 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015094 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015313 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015313 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015315 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015339 SEVR G2S1 980404:37(28) Get 8
+015357 APPL G2A2 980404:36(27) Append {7:1lCfq3ObZtzEpZoDSTYO} OK
+015357 APPL G2A1 980404:37(28) Get {8:3jEinR3ZVSzlB3iBZX1q} OK
+015534 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015541 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015543 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015748 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015761 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015762 CTRL Query 6:{5 [2 2 2 2 2 2 2 2 2 2] map[2:[server-2-0 server-2-1 server-2-2]]}
+015848 SEVR G2S1 980404:38(29) Append {8:jUxfd_n653WOD9OQ6j__}
+fatal error: concurrent map iteration and map write
+015854 APPL G2A1 980404:38(29) Append {8:jUxfd_n653WOD9OQ6j__} OK
+
+goroutine 5974 [running]:
+runtime.throw({0x5cec07, 0xc0002ee520})
+	/usr/local/go/src/runtime/panic.go:1198 +0x71 fp=0xc000312fe8 sp=0xc000312fb8 pc=0x435791
+runtime.mapiternext(0xc0002ee520)
+	/usr/local/go/src/runtime/map.go:858 +0x4eb fp=0xc000313058 sp=0xc000312fe8 pc=0x40f9cb
+reflect.mapiternext(0x591220)
+	/usr/local/go/src/runtime/map.go:1346 +0x19 fp=0xc000313070 sp=0xc000313058 pc=0x461ff9
+reflect.Value.MapKeys({0x59c8a0, 0xc00028a9b0, 0xc0003131c0})
+	/usr/local/go/src/reflect/value.go:1581 +0xe5 fp=0xc0003130f0 sp=0xc000313070 pc=0x4bdbe5
+encoding/gob.(*Encoder).encodeMap(0xc0000c4fa0, 0xc0003131a0, {0x59c8a0, 0xc00028a9b0, 0x5b7460}, 0xc00028a990, 0xc000313200, 0x534e8d, 0xc00028a658)
+	/usr/local/go/src/encoding/gob/encode.go:371 +0x1cf fp=0xc0003131b0 sp=0xc0003130f0 pc=0x53696f
+encoding/gob.encOpFor.func3(0xc0002b6510, 0xc0004b7f00, {0x59c8a0, 0xc00028a9b0, 0x2900000000000010})
+	/usr/local/go/src/encoding/gob/encode.go:571 +0x185 fp=0xc000313240 sp=0xc0003131b0 pc=0x538785
+encoding/gob.(*Encoder).encodeStruct(0xc0000c4fa0, 0xc0001192c0, 0xc0004787f8, {0x5b7460, 0xc00028a990, 0xc000313360})
+	/usr/local/go/src/encoding/gob/encode.go:328 +0x2d1 fp=0xc000313300 sp=0xc000313240 pc=0x536091
+encoding/gob.(*Encoder).encode(0xc0000c4fa0, 0xc0004661e0, {0x5b7460, 0xc00028a990, 0xc0000ee0c0}, 0xc0000ee0c0)
+	/usr/local/go/src/encoding/gob/encode.go:701 +0x1d7 fp=0xc0003133b0 sp=0xc000313300 pc=0x539ab7
+encoding/gob.(*Encoder).encodeInterface(0xc0000c4fa0, 0xc0002a3a40, {0x5989c0, 0xc0001a9950, 0xe})
+	/usr/local/go/src/encoding/gob/encode.go:419 +0x5fc fp=0xc000313500 sp=0xc0003133b0 pc=0x53711c
+encoding/gob.encOpFor.func5(0xc00013e030, 0xc0004b7e80, {0x5989c0, 0xc0001a9950, 0x7600000000000010})
+	/usr/local/go/src/encoding/gob/encode.go:589 +0x116 fp=0xc000313550 sp=0xc000313500 pc=0x53fc96
+encoding/gob.(*Encoder).encodeStruct(0xc0000c4fa0, 0xc0002a3a40, 0xc0004786a8, {0x5a52c0, 0xc0001a9940, 0xc000313670})
+	/usr/local/go/src/encoding/gob/encode.go:328 +0x2d1 fp=0xc000313610 sp=0xc000313550 pc=0x536091
+encoding/gob.(*Encoder).encode(0xc0000c4fa0, 0xc0004661e0, {0x5a52c0, 0xc0001a9940, 0xc0000ee000}, 0xc0000ee000)
+	/usr/local/go/src/encoding/gob/encode.go:701 +0x1d7 fp=0xc0003136c0 sp=0xc000313610 pc=0x539ab7
+encoding/gob.(*Encoder).encodeInterface(0xc0000c4fa0, 0xc0000c4fd8, {0x5989c0, 0xc0004c5218, 0xc000313850})
+	/usr/local/go/src/encoding/gob/encode.go:419 +0x5fc fp=0xc000313810 sp=0xc0003136c0 pc=0x53711c
+encoding/gob.encOpFor.func5(0xc0002b23c0, 0xc0004b7e00, {0x5989c0, 0xc0004c5218, 0x5a50e0})
+	/usr/local/go/src/encoding/gob/encode.go:589 +0x116 fp=0xc000313860 sp=0xc000313810 pc=0x53fc96
+encoding/gob.(*Encoder).encodeStruct(0xc0000c4fa0, 0xc0000c4fd8, 0xc000572090, {0x5a50e0, 0xc0004c5218, 0xc000313a38})
+	/usr/local/go/src/encoding/gob/encode.go:328 +0x2d1 fp=0xc000313920 sp=0xc000313860 pc=0x536091
+encoding/gob.encOpFor.func4(0x58d4c0, 0xc0004b7ce0, {0x5a50e0, 0xc0004c5218, 0x590aa0})
+	/usr/local/go/src/encoding/gob/encode.go:581 +0xec fp=0xc000313990 sp=0xc000313920 pc=0x53858c
+encoding/gob.(*Encoder).encodeArray(0x58d4c0, 0xc0004b7ce0, {0x58d4c0, 0xc0004b7ce0, 0xc0004b7cc0}, 0xc0002ee510, 0x0, 0x1c, 0x0)
+	/usr/local/go/src/encoding/gob/encode.go:351 +0x29d fp=0xc000313a60 sp=0xc000313990 pc=0x53643d
+encoding/gob.encOpFor.func1(0xc0002b63c0, 0xc0004b7d80, {0x58d4c0, 0xc0004b7ce0, 0xc})
+	/usr/local/go/src/encoding/gob/encode.go:551 +0x136 fp=0xc000313ae8 sp=0xc000313a60 pc=0x538a96
+encoding/gob.(*Encoder).encodeStruct(0xc0000c4fa0, 0xc0000c4fd8, 0xc000572588, {0x5b7360, 0xc0004b7cc0, 0xc000313c08})
+	/usr/local/go/src/encoding/gob/encode.go:328 +0x2d1 fp=0xc000313ba8 sp=0xc000313ae8 pc=0x536091
+encoding/gob.(*Encoder).encode(0xc0000c4fa0, 0xc0004661e0, {0x588a60, 0xc0004b7cc0, 0xc00008ed40}, 0xc00008ed40)
+	/usr/local/go/src/encoding/gob/encode.go:701 +0x1d7 fp=0xc000313c58 sp=0xc000313ba8 pc=0x539ab7
+encoding/gob.(*Encoder).EncodeValue(0xc0000c4fa0, {0x588a60, 0xc0004b7cc0, 0x588a60})
+	/usr/local/go/src/encoding/gob/encoder.go:251 +0x42e fp=0xc000313d28 sp=0xc000313c58 pc=0x53ad6e
+encoding/gob.(*Encoder).Encode(0x588a60, {0x588a60, 0xc0004b7cc0})
+	/usr/local/go/src/encoding/gob/encoder.go:176 +0xa5 fp=0xc000313d68 sp=0xc000313d28 pc=0x53a745
+6.5840/labgob.(*LabEncoder).Encode(0xc000304ea8, {0x588a60, 0xc0004b7cc0})
+	/home/ysh/mit/6.5840/src/labgob/labgob.go:34 +0x45 fp=0xc000313d90 sp=0xc000313d68 pc=0x5425c5
+6.5840/labrpc.(*ClientEnd).Call(0xc00007ad40, {0x5c8d6f, 0x20}, {0x588a60, 0xc0004b7cc0}, {0x588aa0, 0xc0000f1fb0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:93 +0x125 fp=0xc000313f00 sp=0xc000313d90 pc=0x545325
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x1c)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d fp=0xc000313fb0 sp=0xc000313f00 pc=0x54f5fd
+6.5840/raft.(*Raft).sync·dwrap·19()
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0x32 fp=0xc000313fe0 sp=0xc000313fb0 pc=0x5508f2
+runtime.goexit()
+	/usr/local/go/src/runtime/asm_amd64.s:1581 +0x1 fp=0xc000313fe8 sp=0xc000313fe0 pc=0x467b61
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0xc0000b8820, {0x5c7dab, 0x46a273}, 0x5da430)
+	/usr/local/go/src/testing/testing.go:1307 +0x375
+testing.runTests.func1(0xc0000b8820)
+	/usr/local/go/src/testing/testing.go:1598 +0x6e
+testing.tRunner(0xc0000b8820, 0xc000061d18)
+	/usr/local/go/src/testing/testing.go:1259 +0x102
+testing.runTests(0xc000022080, {0x721ce0, 0xd, 0xd}, {0x480d8d, 0x5c7f41, 0x725d20})
+	/usr/local/go/src/testing/testing.go:1596 +0x43f
+testing.(*M).Run(0xc000022080)
+	/usr/local/go/src/testing/testing.go:1504 +0x51d
+main.main()
+	_testmain.go:67 +0x14b
+
+goroutine 6 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00036f8c0, {0x5c88bb, 0x2}, {0x589260, 0xc00030d700}, {0x5892a0, 0xc00036f8e0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/shardkv.(*Clerk).PutAppend(0xc000022c80, {0x5ce276, 0x1}, {0xc0003d4280, 0x14}, {0x5c60f4, 0x6})
+	/home/ysh/mit/6.5840/src/shardkv/client.go:119 +0x32e
+6.5840/shardkv.(*Clerk).Append(...)
+	/home/ysh/mit/6.5840/src/shardkv/client.go:142
+6.5840/shardkv.TestMissChange(0x0)
+	/home/ysh/mit/6.5840/src/shardkv/test_test.go:251 +0x45d
+testing.tRunner(0xc0000b89c0, 0x5da430)
+	/usr/local/go/src/testing/testing.go:1259 +0x102
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:1306 +0x35a
+
+goroutine 7 [select]:
+6.5840/labrpc.MakeNetwork.func1()
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:153 +0xbe
+created by 6.5840/labrpc.MakeNetwork
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:151 +0x17b
+
+goroutine 8 [select]:
+6.5840/raft.(*Raft).ticker(0xc0000ba1c0)
+	/home/ysh/mit/6.5840/src/raft/raft.go:699 +0x97
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:912 +0x369
+
+goroutine 9 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xc000011c10, 0x50)
+	/usr/local/go/src/runtime/sema.go:513 +0x13d
+sync.(*Cond).Wait(0xc0000ba1c0)
+	/usr/local/go/src/sync/cond.go:56 +0x8c
+6.5840/raft.(*Raft).applier(0xc0000ba1c0)
+	/home/ysh/mit/6.5840/src/raft/raft.go:844 +0x10d
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:914 +0x3af
+
+goroutine 10 [chan receive]:
+6.5840/shardctrler.(*ShardCtrler).applier(0xc00007e230)
+	/home/ysh/mit/6.5840/src/shardctrler/server.go:236 +0x76
+created by 6.5840/shardctrler.StartServer
+	/home/ysh/mit/6.5840/src/shardctrler/server.go:325 +0x332
+
+goroutine 11 [select]:
+6.5840/raft.(*Raft).ticker(0xc0000ba2a0)
+	/home/ysh/mit/6.5840/src/raft/raft.go:699 +0x97
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:912 +0x369
+
+goroutine 12 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xc000011d50, 0x49)
+	/usr/local/go/src/runtime/sema.go:513 +0x13d
+sync.(*Cond).Wait(0xc0000ba2a0)
+	/usr/local/go/src/sync/cond.go:56 +0x8c
+6.5840/raft.(*Raft).applier(0xc0000ba2a0)
+	/home/ysh/mit/6.5840/src/raft/raft.go:844 +0x10d
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:914 +0x3af
+
+goroutine 13 [chan receive]:
+6.5840/shardctrler.(*ShardCtrler).applier(0xc00007e320)
+	/home/ysh/mit/6.5840/src/shardctrler/server.go:236 +0x76
+created by 6.5840/shardctrler.StartServer
+	/home/ysh/mit/6.5840/src/shardctrler/server.go:325 +0x332
+
+goroutine 14 [select]:
+6.5840/raft.(*Raft).ticker(0xc0000ba380)
+	/home/ysh/mit/6.5840/src/raft/raft.go:699 +0x97
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:912 +0x369
+
+goroutine 15 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xc000011ed0, 0x48)
+	/usr/local/go/src/runtime/sema.go:513 +0x13d
+sync.(*Cond).Wait(0xc0000ba380)
+	/usr/local/go/src/sync/cond.go:56 +0x8c
+6.5840/raft.(*Raft).applier(0xc0000ba380)
+	/home/ysh/mit/6.5840/src/raft/raft.go:844 +0x10d
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:914 +0x3af
+
+goroutine 16 [chan receive]:
+6.5840/shardctrler.(*ShardCtrler).applier(0xc00007e410)
+	/home/ysh/mit/6.5840/src/shardctrler/server.go:236 +0x76
+created by 6.5840/shardctrler.StartServer
+	/home/ysh/mit/6.5840/src/shardctrler/server.go:325 +0x332
+
+goroutine 3997 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x2}, {0x588a60, 0xc0002ffbc0}, {0x588aa0, 0xc00037c780})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0x2)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5327 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0xf)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 19 [chan receive]:
+6.5840/shardkv.(*ShardKV).applier(0xc0000ea680)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:290 +0x76
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:582 +0x60f
+
+goroutine 20 [sleep]:
+time.Sleep(0x1312d00)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/shardkv.(*ShardKV).poller(0xc0000ea680)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:196 +0x3d
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:584 +0x657
+
+goroutine 21 [select]:
+6.5840/raft.(*Raft).ticker(0xc0000ba540)
+	/home/ysh/mit/6.5840/src/raft/raft.go:699 +0x97
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:912 +0x369
+
+goroutine 22 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xc0000ee290, 0x1f)
+	/usr/local/go/src/runtime/sema.go:513 +0x13d
+sync.(*Cond).Wait(0xc0000ba540)
+	/usr/local/go/src/sync/cond.go:56 +0x8c
+6.5840/raft.(*Raft).applier(0xc0000ba540)
+	/home/ysh/mit/6.5840/src/raft/raft.go:844 +0x10d
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:914 +0x3af
+
+goroutine 23 [chan receive]:
+6.5840/shardkv.(*ShardKV).applier(0xc0000eaea0)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:290 +0x76
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:582 +0x60f
+
+goroutine 24 [sleep]:
+time.Sleep(0x1312d00)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/shardkv.(*ShardKV).poller(0xc0000eaea0)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:196 +0x3d
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:584 +0x657
+
+goroutine 25 [select]:
+6.5840/raft.(*Raft).ticker(0xc0000ba620)
+	/home/ysh/mit/6.5840/src/raft/raft.go:699 +0x97
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:912 +0x369
+
+goroutine 26 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xc0000ee410, 0x23)
+	/usr/local/go/src/runtime/sema.go:513 +0x13d
+sync.(*Cond).Wait(0xc0000ba620)
+	/usr/local/go/src/sync/cond.go:56 +0x8c
+6.5840/raft.(*Raft).applier(0xc0000ba620)
+	/home/ysh/mit/6.5840/src/raft/raft.go:844 +0x10d
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:914 +0x3af
+
+goroutine 27 [chan receive]:
+6.5840/shardkv.(*ShardKV).applier(0xc0000eb6c0)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:290 +0x76
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:582 +0x60f
+
+goroutine 28 [sleep]:
+time.Sleep(0x1312d00)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/shardkv.(*ShardKV).poller(0xc0000eb6c0)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:196 +0x3d
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:584 +0x657
+
+goroutine 5833 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x10}, {0x588a60, 0xc000208040}, {0x588aa0, 0xc000256000})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0xf)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 31 [chan receive]:
+6.5840/shardkv.(*ShardKV).applier(0xc000288000)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:290 +0x76
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:582 +0x60f
+
+goroutine 32 [sleep]:
+time.Sleep(0x1312d00)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/shardkv.(*ShardKV).poller(0xc000288000)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:196 +0x3d
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:584 +0x657
+
+goroutine 33 [select]:
+6.5840/raft.(*Raft).ticker(0xc0000ba7e0)
+	/home/ysh/mit/6.5840/src/raft/raft.go:699 +0x97
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:912 +0x369
+
+goroutine 34 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xc0000ee710, 0xc)
+	/usr/local/go/src/runtime/sema.go:513 +0x13d
+sync.(*Cond).Wait(0x0)
+	/usr/local/go/src/sync/cond.go:56 +0x8c
+6.5840/raft.(*Raft).applier(0xc0000ba7e0)
+	/home/ysh/mit/6.5840/src/raft/raft.go:844 +0x10d
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:914 +0x3af
+
+goroutine 35 [chan receive]:
+6.5840/shardkv.(*ShardKV).applier(0xc000288820)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:290 +0x76
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:582 +0x60f
+
+goroutine 36 [sleep]:
+time.Sleep(0x1312d00)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/shardkv.(*ShardKV).poller(0xc000288820)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:196 +0x3d
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:584 +0x657
+
+goroutine 37 [select]:
+6.5840/raft.(*Raft).ticker(0xc0000ba8c0)
+	/home/ysh/mit/6.5840/src/raft/raft.go:699 +0x97
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:912 +0x369
+
+goroutine 38 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xc0000ee890, 0xc)
+	/usr/local/go/src/runtime/sema.go:513 +0x13d
+sync.(*Cond).Wait(0x0)
+	/usr/local/go/src/sync/cond.go:56 +0x8c
+6.5840/raft.(*Raft).applier(0xc0000ba8c0)
+	/home/ysh/mit/6.5840/src/raft/raft.go:844 +0x10d
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:914 +0x3af
+
+goroutine 39 [chan receive]:
+6.5840/shardkv.(*ShardKV).applier(0xc000289040)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:290 +0x76
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:582 +0x60f
+
+goroutine 40 [sleep]:
+time.Sleep(0x1312d00)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/shardkv.(*ShardKV).poller(0xc000289040)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:196 +0x3d
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:584 +0x657
+
+goroutine 4039 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x4}, {0x588a60, 0xc000345440}, {0x588aa0, 0xc0002561e0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0x3)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 43 [chan receive]:
+6.5840/shardkv.(*ShardKV).applier(0xc000289a00)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:290 +0x76
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:582 +0x60f
+
+goroutine 44 [sleep]:
+time.Sleep(0x1312d00)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/shardkv.(*ShardKV).poller(0xc000289a00)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:196 +0x3d
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:584 +0x657
+
+goroutine 45 [select]:
+6.5840/raft.(*Raft).ticker(0xc0000baa80)
+	/home/ysh/mit/6.5840/src/raft/raft.go:699 +0x97
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:912 +0x369
+
+goroutine 46 [sync.Cond.Wait]:
+sync.runtime_notifyListWait(0xc0000eeb90, 0x1c)
+	/usr/local/go/src/runtime/sema.go:513 +0x13d
+sync.(*Cond).Wait(0x0)
+	/usr/local/go/src/sync/cond.go:56 +0x8c
+6.5840/raft.(*Raft).applier(0xc0000baa80)
+	/home/ysh/mit/6.5840/src/raft/raft.go:844 +0x10d
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:914 +0x3af
+
+goroutine 47 [chan receive]:
+6.5840/shardkv.(*ShardKV).applier(0xc00029e340)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:290 +0x76
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:582 +0x60f
+
+goroutine 48 [sleep]:
+time.Sleep(0x1312d00)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/shardkv.(*ShardKV).poller(0xc00029e340)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:196 +0x3d
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:584 +0x657
+
+goroutine 49 [select]:
+6.5840/raft.(*Raft).ticker(0xc0000bab60)
+	/home/ysh/mit/6.5840/src/raft/raft.go:699 +0x97
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:912 +0x369
+
+goroutine 50 [runnable]:
+sync.runtime_notifyListWait(0xc0000eed10, 0x1a)
+	/usr/local/go/src/runtime/sema.go:513 +0x13d
+sync.(*Cond).Wait(0x0)
+	/usr/local/go/src/sync/cond.go:56 +0x8c
+6.5840/raft.(*Raft).applier(0xc0000bab60)
+	/home/ysh/mit/6.5840/src/raft/raft.go:844 +0x10d
+created by 6.5840/raft.Make
+	/home/ysh/mit/6.5840/src/raft/raft.go:914 +0x3af
+
+goroutine 51 [chan receive]:
+6.5840/shardkv.(*ShardKV).applier(0xc00029eb60)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:290 +0x76
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:582 +0x60f
+
+goroutine 52 [sleep]:
+time.Sleep(0x1312d00)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/shardkv.(*ShardKV).poller(0xc00029eb60)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:196 +0x3d
+created by 6.5840/shardkv.StartServer
+	/home/ysh/mit/6.5840/src/shardkv/server.go:584 +0x657
+
+goroutine 3915 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x15)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 3968 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x1a)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 2006 [select]:
+6.5840/raft.(*Raft).heartBeat(0xc0000ba620)
+	/home/ysh/mit/6.5840/src/raft/raft.go:819 +0x7d
+created by 6.5840/raft.(*Raft).startElection.func1
+	/home/ysh/mit/6.5840/src/raft/raft.go:768 +0x353
+
+goroutine 4252 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x10}, {0x588a60, 0xc0003f4040}, {0x588aa0, 0xc00040e000})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0x9)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4187 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a660, {0x5c8d6f, 0x10}, {0x588a60, 0xc00013dd80}, {0x588aa0, 0xc0000f1e30})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x21)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4533 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).sendSnapshot(0xc0000ba620, 0x0, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:622 +0x185
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x26)
+	/home/ysh/mit/6.5840/src/raft/raft.go:500 +0x2c5
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 1644 [select]:
+6.5840/raft.(*Raft).heartBeat(0xc0000baa80)
+	/home/ysh/mit/6.5840/src/raft/raft.go:819 +0x7d
+created by 6.5840/raft.(*Raft).startElection.func1
+	/home/ysh/mit/6.5840/src/raft/raft.go:768 +0x353
+
+goroutine 3466 [select]:
+6.5840/raft.(*Raft).heartBeat(0xc0000ba1c0)
+	/home/ysh/mit/6.5840/src/raft/raft.go:819 +0x7d
+created by 6.5840/raft.(*Raft).startElection.func1
+	/home/ysh/mit/6.5840/src/raft/raft.go:768 +0x353
+
+goroutine 2565 [select]:
+6.5840/raft.(*Raft).heartBeat(0xc0000ba7e0)
+	/home/ysh/mit/6.5840/src/raft/raft.go:819 +0x7d
+created by 6.5840/raft.(*Raft).startElection.func1
+	/home/ysh/mit/6.5840/src/raft/raft.go:768 +0x353
+
+goroutine 4230 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0x8)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4433 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a660, {0x5c8d6f, 0x10}, {0x588a60, 0xc000255a80}, {0x588aa0, 0xc00001a810})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x24)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4153 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x4)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4346 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a660, {0x5c8d6f, 0x10}, {0x588a60, 0xc000441580}, {0x588aa0, 0xc0002572c0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x22)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5184 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x18)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4177 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x20)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4143 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x2)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4733 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x13)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4126 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x3)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4119 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0x6)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4129 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x1e)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4594 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007ad40, {0x5c8d6f, 0x10}, {0x588a60, 0xc0001bbb80}, {0x588aa0, 0xc0002f4600})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0xc)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4248 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x5)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 3891 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4043 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x4}, {0x588a60, 0xc000376040}, {0x588aa0, 0xc0002f4000})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0x4)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4406 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x10}, {0x588a60, 0xc0003f53c0}, {0x588aa0, 0xc00040e5a0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0xd)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 3962 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4201 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0x7)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4019 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a660, {0x5c8d6f, 0x8}, {0x588a60, 0xc000345800}, {0x588aa0, 0xc000256210})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x1c)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4550 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).sendSnapshot(0xc0000ba620, 0x0, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:622 +0x185
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x25)
+	/home/ysh/mit/6.5840/src/raft/raft.go:500 +0x2c5
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4740 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007ad40, {0x5c8d6f, 0x20}, {0x588a60, 0xc00048d540}, {0x588aa0, 0xc0002572f0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x10)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4103 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a660, {0x5c8d6f, 0x10}, {0x588a60, 0xc000523680}, {0x588aa0, 0xc0000f0f30})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x1e)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4032 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x1d)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4076 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x2)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4328 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x23)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4033 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x1b)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4069 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x8}, {0x588a60, 0xc0003765c0}, {0x588aa0, 0xc0002f4030})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0x5)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4274 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a660, {0x5c8d6f, 0x10}, {0x588a60, 0xc000240f40}, {0x588aa0, 0xc00040f380})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x22)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5483 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).sendSnapshot(0xc0000ba620, 0x0, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:622 +0x185
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x2b)
+	/home/ysh/mit/6.5840/src/raft/raft.go:500 +0x2c5
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4395 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x7)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4385 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x6)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4477 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x10}, {0x588a60, 0xc00015f540}, {0x588aa0, 0xc00040ff50})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0xe)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4418 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x8)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5124 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x10}, {0x588a60, 0xc00048d780}, {0x588aa0, 0xc00031e150})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0xf)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4427 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007ad40, {0x5c8d6f, 0x10}, {0x588a60, 0xc000344e00}, {0x588aa0, 0xc0003ee780})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x9)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4629 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a660, {0x5c9683, 0x10100c00004ff68}, {0x588b20, 0xc00008fe40}, {0x588b60, 0xc000252c80})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).sendSnapshot(0xc0000ba620, 0x0, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:621 +0x1f2
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x2a)
+	/home/ysh/mit/6.5840/src/raft/raft.go:500 +0x2c5
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5753 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).sendSnapshot(0xc0000ba620, 0x0, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:622 +0x185
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x2b)
+	/home/ysh/mit/6.5840/src/raft/raft.go:500 +0x2c5
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4509 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0xa)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4888 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x10}, {0x588a60, 0xc00008f800}, {0x588aa0, 0xc00031f0b0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0xf)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4540 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0xb)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4531 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a660, {0x5c9683, 0x10100000000002a}, {0x588b20, 0xc000155dc0}, {0x588b60, 0xc00054f9f0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).sendSnapshot(0xc0000ba620, 0x0, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:621 +0x1f2
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x26)
+	/home/ysh/mit/6.5840/src/raft/raft.go:500 +0x2c5
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5973 [runnable]:
+6.5840/shardkv.(*ShardKV).PutAppend(0xc00029e340, 0xc00052d840, 0xc000526f00)
+	/home/ysh/mit/6.5840/src/shardkv/server.go:110 +0x865
+reflect.Value.call({0xc00007d8c0, 0xc00000ebf8, 0xc0006b9b10}, {0x5c5d12, 0x4}, {0xc0006b9c68, 0x3, 0xc0006b9b40})
+	/usr/local/go/src/reflect/value.go:556 +0x845
+reflect.Value.Call({0xc00007d8c0, 0xc00000ebf8, 0xc0002cd2d0}, {0xc0006b9c68, 0x3, 0x3})
+	/usr/local/go/src/reflect/value.go:339 +0xc5
+6.5840/labrpc.(*Service).dispatch(0xc0000eebc0, {0x5c88c3, 0x9}, {{0x591220, 0xc0002ee490}, {0x5c88bb, 0x11}, {0x612140, 0x589260}, {0xc0004ba240, ...}, ...})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:494 +0x39d
+6.5840/labrpc.(*Server).dispatch(0xc00000cff0, {{0x591220, 0xc0002ee490}, {0x5c88bb, 0x11}, {0x612140, 0x589260}, {0xc0004ba240, 0x76, 0xc0}, ...})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:418 +0x1fe
+6.5840/labrpc.(*Network).processReq.func1()
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:240 +0x58
+created by 6.5840/labrpc.(*Network).processReq
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:239 +0x1df
+
+goroutine 4907 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007ad40, {0x5c8d6f, 0x20}, {0x588a60, 0xc0003d0d80}, {0x588aa0, 0xc0003ef3b0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x16)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4647 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0xf)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4678 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0xe)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4845 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007ad40, {0x5c8d6f, 0x20}, {0x588a60, 0xc0004b7700}, {0x588aa0, 0xc00037de60})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x15)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4673 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0xd)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4672 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a920, {0x5c8d6f, 0x10}, {0x588a60, 0xc0003f4b40}, {0x588aa0, 0xc0002f5b30})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0xf)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4715 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x10)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5496 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x19)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5634 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007ad40, {0x5c8d6f, 0x20}, {0x588a60, 0xc00052c9c0}, {0x588aa0, 0xc0000f0de0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x1a)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5972 [select]:
+6.5840/labrpc.(*Network).processReq(0xc00007e1e0, {{0x591220, 0xc0002ee490}, {0x5c88bb, 0x11}, {0x612140, 0x589260}, {0xc0004ba240, 0x76, 0xc0}, ...})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:251 +0x41c
+created by 6.5840/labrpc.MakeNetwork.func1
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:157 +0x3e
+
+goroutine 5030 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007ad40, {0x5c8d6f, 0x20}, {0x588a60, 0xc0001d6600}, {0x588aa0, 0xc00040f050})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x17)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4770 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x12)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5518 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba7e0, 0x0, 0x1, 0xf)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4761 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a660, {0x5c9683, 0x10100c0000f6f68}, {0x588b20, 0xc00048d400}, {0x588b60, 0xc0001d0a00})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).sendSnapshot(0xc0000ba620, 0x0, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:621 +0x1f2
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x2b)
+	/home/ysh/mit/6.5840/src/raft/raft.go:500 +0x2c5
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 4863 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007ad40, {0x5c8d6f, 0x20}, {0x588a60, 0xc00008f440}, {0x588aa0, 0xc00031eff0})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x14)
+	/home/ysh/mit/6.5840/src/raft/raft.go:530 +0x81d
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5276 [chan receive]:
+6.5840/labrpc.(*ClientEnd).Call(0xc00007a660, {0x5c9683, 0x10101c000406768}, {0x588b20, 0xc000254040}, {0x588b60, 0xc0003ca000})
+	/home/ysh/mit/6.5840/src/labrpc/labrpc.go:112 +0x26e
+6.5840/raft.(*Raft).sendSnapshot(0xc0000ba620, 0x0, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:621 +0x1f2
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x2b)
+	/home/ysh/mit/6.5840/src/raft/raft.go:500 +0x2c5
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5045 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).sendSnapshot(0xc0000ba620, 0x0, 0x1)
+	/home/ysh/mit/6.5840/src/raft/raft.go:622 +0x185
+6.5840/raft.(*Raft).replicateEntries(0xc0000ba620, 0x0, 0x1, 0x2b)
+	/home/ysh/mit/6.5840/src/raft/raft.go:500 +0x2c5
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+
+goroutine 5842 [sleep]:
+time.Sleep(0x2faf080)
+	/usr/local/go/src/runtime/time.go:193 +0x12e
+6.5840/raft.(*Raft).replicateEntries(0xc0000baa80, 0x0, 0x1, 0x1b)
+	/home/ysh/mit/6.5840/src/raft/raft.go:531 +0x7bd
+created by 6.5840/raft.(*Raft).sync
+	/home/ysh/mit/6.5840/src/raft/raft.go:793 +0xd6
+exit status 2
+FAIL	6.5840/shardkv	1.607s

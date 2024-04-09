@@ -47,13 +47,13 @@ func (sc *ShardCtrler) Join(args *JoinArgs, reply *JoinReply) {
 	entry := sc.getDuplicateEntry(args.ClientID, true)
 	if entry.Seq >= args.Seq {
 		reply.Err = entry.Err
-		DPrintf(dCtrler, "S%d Dup %d:%d Join %v\n", sc.me, args.ClientID, args.Seq, reply.Err)
+		// Dprintf(dCtrler, "S%d Dup %d:%d Join %v\n", sc.me, args.ClientID, args.Seq, reply.Err)
 		return
 	}
 	op := Op{ClientID: args.ClientID, Seq: args.Seq, OpType: "Join", Servers: args.Servers}
 	index, _, isLeader := sc.rf.Start(op)
 	if isLeader {
-		DPrintf(dCtrler, "S%d %d:%d(%d) Join %v\n", sc.me, args.ClientID, args.Seq, index, args.Servers)
+		// Dprintf(dCtrler, "S%d %d:%d(%d) Join %v\n", sc.me, args.ClientID, args.Seq, index, args.Servers)
 		ch := sc.getNotifyChannel(index, true)
 		defer func() {
 			sc.mu.Lock()
@@ -68,11 +68,11 @@ func (sc *ShardCtrler) Join(args *JoinArgs, reply *JoinReply) {
 			if msg.ClientID == args.ClientID && msg.Seq == args.Seq {
 				reply.Err = msg.Err
 			} else {
-				DPrintf(dCtrler, "S%d %d:%d Join OverWritten\n", sc.me, args.ClientID, args.Seq)
+				// Dprintf(dCtrler, "S%d %d:%d Join OverWritten\n", sc.me, args.ClientID, args.Seq)
 				reply.Err = ErrOverWritten
 			}
 		case <-time.After(RequestTimeout):
-			DPrintf(dCtrler, "S%d %d:%d Join Timeout\n", sc.me, args.ClientID, args.Seq)
+			// Dprintf(dCtrler, "S%d %d:%d Join Timeout\n", sc.me, args.ClientID, args.Seq)
 			reply.Err = ErrTimeout
 		}
 	} else {
@@ -85,13 +85,13 @@ func (sc *ShardCtrler) Leave(args *LeaveArgs, reply *LeaveReply) {
 	entry := sc.getDuplicateEntry(args.ClientID, true)
 	if entry.Seq >= args.Seq {
 		reply.Err = entry.Err
-		DPrintf(dCtrler, "S%d Dup %d:%d Leave %v\n", sc.me, args.ClientID, args.Seq, reply.Err)
+		// Dprintf(dCtrler, "S%d Dup %d:%d Leave %v\n", sc.me, args.ClientID, args.Seq, reply.Err)
 		return
 	}
 	op := Op{ClientID: args.ClientID, Seq: args.Seq, OpType: "Leave", GIDs: args.GIDs}
 	index, _, isLeader := sc.rf.Start(op)
 	if isLeader {
-		DPrintf(dCtrler, "S%d %d:%d(%d) Leave %v\n", sc.me, args.ClientID, args.Seq, index, args.GIDs)
+		// Dprintf(dCtrler, "S%d %d:%d(%d) Leave %v\n", sc.me, args.ClientID, args.Seq, index, args.GIDs)
 		ch := sc.getNotifyChannel(index, true)
 		defer func() {
 			sc.mu.Lock()
@@ -106,11 +106,11 @@ func (sc *ShardCtrler) Leave(args *LeaveArgs, reply *LeaveReply) {
 			if msg.ClientID == args.ClientID && msg.Seq == args.Seq {
 				reply.Err = msg.Err
 			} else {
-				DPrintf(dCtrler, "S%d %d:%d Leave OverWritten\n", sc.me, args.ClientID, args.Seq)
+				// Dprintf(dCtrler, "S%d %d:%d Leave OverWritten\n", sc.me, args.ClientID, args.Seq)
 				reply.Err = ErrOverWritten
 			}
 		case <-time.After(RequestTimeout):
-			DPrintf(dCtrler, "S%d %d:%d Leave Timeout\n", sc.me, args.ClientID, args.Seq)
+			// Dprintf(dCtrler, "S%d %d:%d Leave Timeout\n", sc.me, args.ClientID, args.Seq)
 			reply.Err = ErrTimeout
 		}
 	} else {
@@ -123,13 +123,13 @@ func (sc *ShardCtrler) Move(args *MoveArgs, reply *MoveReply) {
 	entry := sc.getDuplicateEntry(args.ClientID, true)
 	if entry.Seq >= args.Seq {
 		reply.Err = entry.Err
-		DPrintf(dCtrler, "S%d Dup %d:%d Move %v\n", sc.me, args.ClientID, args.Seq, reply.Err)
+		// Dprintf(dCtrler, "S%d Dup %d:%d Move %v\n", sc.me, args.ClientID, args.Seq, reply.Err)
 		return
 	}
 	op := Op{ClientID: args.ClientID, Seq: args.Seq, OpType: "Move", Shard: args.Shard, GID: args.GID}
 	index, _, isLeader := sc.rf.Start(op)
 	if isLeader {
-		DPrintf(dCtrler, "S%d %d:%d(%d) Move %v %v\n", sc.me, args.ClientID, args.Seq, index, args.Shard, args.GID)
+		// Dprintf(dCtrler, "S%d %d:%d(%d) Move %v %v\n", sc.me, args.ClientID, args.Seq, index, args.Shard, args.GID)
 		ch := sc.getNotifyChannel(index, true)
 		defer func() {
 			sc.mu.Lock()
@@ -144,11 +144,11 @@ func (sc *ShardCtrler) Move(args *MoveArgs, reply *MoveReply) {
 			if msg.ClientID == args.ClientID && msg.Seq == args.Seq {
 				reply.Err = msg.Err
 			} else {
-				DPrintf(dCtrler, "S%d %d:%d Move OverWritten\n", sc.me, args.ClientID, args.Seq)
+				// Dprintf(dCtrler, "S%d %d:%d Move OverWritten\n", sc.me, args.ClientID, args.Seq)
 				reply.Err = ErrOverWritten
 			}
 		case <-time.After(RequestTimeout):
-			DPrintf(dCtrler, "S%d %d:%d Move Timeout\n", sc.me, args.ClientID, args.Seq)
+			// Dprintf(dCtrler, "S%d %d:%d Move Timeout\n", sc.me, args.ClientID, args.Seq)
 			reply.Err = ErrTimeout
 		}
 	} else {
@@ -162,13 +162,13 @@ func (sc *ShardCtrler) Query(args *QueryArgs, reply *QueryReply) {
 	if entry.Seq >= args.Seq {
 		reply.Config = entry.Config
 		reply.Err = entry.Err
-		DPrintf(dCtrler, "S%d Dup %d:%d Query %v %v\n", sc.me, args.ClientID, args.Seq, reply.Config, reply.Err)
+		// Dprintf(dCtrler, "S%d Dup %d:%d Query %v %v\n", sc.me, args.ClientID, args.Seq, reply.Config, reply.Err)
 		return
 	}
 	op := Op{ClientID: args.ClientID, Seq: args.Seq, OpType: "Query", Num: args.Num}
 	index, _, isLeader := sc.rf.Start(op)
 	if isLeader {
-		DPrintf(dCtrler, "S%d %d:%d(%d) Query %v\n", sc.me, args.ClientID, args.Seq, index, args.Num)
+		// Dprintf(dCtrler, "S%d %d:%d(%d) Query %v\n", sc.me, args.ClientID, args.Seq, index, args.Num)
 		ch := sc.getNotifyChannel(index, true)
 		defer func() {
 			sc.mu.Lock()
@@ -184,11 +184,11 @@ func (sc *ShardCtrler) Query(args *QueryArgs, reply *QueryReply) {
 				reply.Config = msg.Config
 				reply.Err = msg.Err
 			} else {
-				DPrintf(dCtrler, "S%d %d:%d Query OverWritten\n", sc.me, args.ClientID, args.Seq)
+				// Dprintf(dCtrler, "S%d %d:%d Query OverWritten\n", sc.me, args.ClientID, args.Seq)
 				reply.Err = ErrOverWritten
 			}
 		case <-time.After(RequestTimeout):
-			DPrintf(dCtrler, "S%d %d:%d Query Timeout\n", sc.me, args.ClientID, args.Seq)
+			// Dprintf(dCtrler, "S%d %d:%d Query Timeout\n", sc.me, args.ClientID, args.Seq)
 			reply.Err = ErrTimeout
 		}
 	} else {
@@ -245,7 +245,7 @@ func (sc *ShardCtrler) applier() {
 					func() {
 						defer func() {
 							if r := recover(); r != nil {
-								DPrintf(dDebug, "S%d Ch%d closed\n", sc.me, msg.CommandIndex)
+								// Dprintf(dDebug, "S%d Ch%d closed\n", sc.me, msg.CommandIndex)
 							}
 						}()
 						if ch := sc.getNotifyChannel(msg.CommandIndex, false); ch != nil {
@@ -260,19 +260,19 @@ func (sc *ShardCtrler) applier() {
 			var config Config
 			var err Err = OK
 			if op.OpType == "Join" {
-				DPrintf(dApplier, "A%d %d:%d(%d) Join %v\n", sc.me, op.ClientID, op.Seq, msg.CommandIndex, op.Servers)
+				// Dprintf(dApplier, "A%d %d:%d(%d) Join %v\n", sc.me, op.ClientID, op.Seq, msg.CommandIndex, op.Servers)
 				err = sc.machine.Join(op.Servers)
 			} else if op.OpType == "Leave" {
-				DPrintf(dApplier, "A%d %d:%d(%d) Leave %v\n", sc.me, op.ClientID, op.Seq, msg.CommandIndex, op.GIDs)
+				// Dprintf(dApplier, "A%d %d:%d(%d) Leave %v\n", sc.me, op.ClientID, op.Seq, msg.CommandIndex, op.GIDs)
 				err = sc.machine.Leave(op.GIDs)
 			} else if op.OpType == "Move" {
-				DPrintf(dApplier, "A%d %d:%d(%d) Move %v %v\n", sc.me, op.ClientID, op.Seq, msg.CommandIndex, op.Shard, op.GID)
+				// Dprintf(dApplier, "A%d %d:%d(%d) Move %v %v\n", sc.me, op.ClientID, op.Seq, msg.CommandIndex, op.Shard, op.GID)
 				err = sc.machine.Move(op.Shard, op.GID)
 			} else if op.OpType == "Query" {
-				DPrintf(dApplier, "A%d %d:%d(%d) Query %v\n", sc.me, op.ClientID, op.Seq, msg.CommandIndex, op.Num)
+				// Dprintf(dApplier, "A%d %d:%d(%d) Query %v\n", sc.me, op.ClientID, op.Seq, msg.CommandIndex, op.Num)
 				config, err = sc.machine.Query(op.Num)
 			} else {
-				DPrintf(dApplier, "A%d %d:%d(%d) Invalid OP %v\n", sc.me, op.ClientID, op.Seq, msg.CommandIndex, op.OpType)
+				// Dprintf(dApplier, "A%d %d:%d(%d) Invalid OP %v\n", sc.me, op.ClientID, op.Seq, msg.CommandIndex, op.OpType)
 				err = ErrInvalidOp
 			}
 
@@ -288,7 +288,7 @@ func (sc *ShardCtrler) applier() {
 				func() {
 					defer func() {
 						if r := recover(); r != nil {
-							DPrintf(dDebug, "S%d Ch%d closed\n", sc.me, msg.CommandIndex)
+							// Dprintf(dDebug, "S%d Ch%d closed\n", sc.me, msg.CommandIndex)
 						}
 					}()
 					if ch := sc.getNotifyChannel(msg.CommandIndex, false); ch != nil {
@@ -320,7 +320,7 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister)
 	sc.notifyChMap = make(map[int]chan NotifyMsg)
 	sc.duplicateTable = make(map[int64]DuplicateEntry)
 
-	DPrintf(dTest, "S%d Start\n", sc.me)
+	// Dprintf(dTest, "S%d Start\n", sc.me)
 
 	go sc.applier()
 

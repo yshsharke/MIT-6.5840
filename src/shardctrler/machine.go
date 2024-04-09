@@ -89,7 +89,7 @@ func (sc *SCMachine) Join(servers map[int][]string) Err {
 	newShards = reassign(newShards, newGroups)
 
 	sc.configs = append(sc.configs, Config{Num: sc.num, Shards: newShards, Groups: newGroups})
-	DPrintf(dMachine, "M%d Join %v\n", sc.me, sc.configs[sc.num])
+	// DPrintf(dCtrler, "M%d Join %v\n", sc.me, sc.configs[sc.num])
 
 	return OK
 }
@@ -119,7 +119,7 @@ func (sc *SCMachine) Leave(gids []int) Err {
 	newShards = reassign(newShards, newGroups)
 
 	sc.configs = append(sc.configs, Config{Num: sc.num, Shards: newShards, Groups: newGroups})
-	DPrintf(dMachine, "M%d Leave %v\n", sc.me, sc.configs[sc.num])
+	// DPrintf(dCtrler, "M%d Leave %v\n", sc.me, sc.configs[sc.num])
 
 	return OK
 }
@@ -138,17 +138,17 @@ func (sc *SCMachine) Move(shard int, gid int) Err {
 	newShards[shard] = gid
 
 	sc.configs = append(sc.configs, Config{Num: sc.num, Shards: newShards, Groups: newGroups})
-	DPrintf(dMachine, "M%d Move %v\n", sc.me, sc.configs[sc.num])
+	// DPrintf(dCtrler, "M%d Move %v\n", sc.me, sc.configs[sc.num])
 
 	return OK
 }
 
 func (sc *SCMachine) Query(num int) (Config, Err) {
 	if num == -1 || num > sc.num {
-		DPrintf(dMachine, "M%d Query %v\n", sc.me, sc.configs[sc.num])
+		// DPrintf(dCtrler, "M%d Query %v\n", sc.me, sc.configs[sc.num])
 		return sc.configs[sc.num], OK
 	} else {
-		DPrintf(dMachine, "M%d Query %v\n", sc.me, sc.configs[num])
+		// DPrintf(dCtrler, "M%d Query %v\n", sc.me, sc.configs[num])
 		return sc.configs[num], OK
 	}
 }
