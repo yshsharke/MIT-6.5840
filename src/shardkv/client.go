@@ -87,6 +87,10 @@ func (ck *Clerk) Get(key string) string {
 				// ... not ok, or ErrWrongLeader
 				if ok && (reply.Err == ErrOverWritten) {
 					si--
+					time.Sleep(20 * time.Millisecond)
+				}
+				if ok && (reply.Err == ErrKilled) {
+					return ""
 				}
 			}
 		}
@@ -126,6 +130,10 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 				// ... not ok, or ErrWrongLeader
 				if ok && (reply.Err == ErrOverWritten) {
 					si--
+					time.Sleep(20 * time.Millisecond)
+				}
+				if ok && (reply.Err == ErrKilled) {
+					return
 				}
 			}
 		}

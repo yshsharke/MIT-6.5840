@@ -85,6 +85,12 @@ func (cfg *config) cleanup() {
 	}
 	cfg.net.Cleanup()
 	cfg.checkTimeout()
+
+	// time.Sleep(time.Duration(10) * time.Second)
+	fmt.Printf("end go routines: %d\n", runtime.NumGoroutine())
+	//buf := make([]byte, 1<<20)
+	//length := runtime.Stack(buf, true)
+	//fmt.Printf("Goroutine Info:\n%s\n", buf[:length])
 }
 
 // check that no server's log is too big.
@@ -336,6 +342,10 @@ func (cfg *config) leavem(gis []int) {
 var ncpu_once sync.Once
 
 func make_config(t *testing.T, n int, unreliable bool, maxraftstate int) *config {
+	fmt.Printf("start go routines: %d\n", runtime.NumGoroutine())
+	//buf := make([]byte, 1<<20)
+	//length := runtime.Stack(buf, true)
+	//fmt.Printf("Goroutine Info:\n%s\n", buf[:length])
 	ncpu_once.Do(func() {
 		if runtime.NumCPU() < 2 {
 			fmt.Printf("warning: only one CPU, which may conceal locking bugs\n")

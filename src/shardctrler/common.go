@@ -40,6 +40,7 @@ const (
 	ErrInvalidOp   = "ErrInvalidOp"
 	ErrOverWritten = "ErrOverWritten"
 	ErrTimeout     = "ErrTimeout"
+	ErrKilled      = "ErrKilled"
 )
 
 type Err string
@@ -101,7 +102,7 @@ type DuplicateEntry struct {
 
 const RequestTimeout = 500 * time.Millisecond
 
-const Debug = true
+const Debug = false
 
 type logTopic string
 

@@ -2,6 +2,7 @@ package shardctrler
 
 import (
 	"6.5840/raft"
+	"sync/atomic"
 	"time"
 )
 import "6.5840/labrpc"
@@ -13,6 +14,8 @@ type ShardCtrler struct {
 	me      int
 	rf      *raft.Raft
 	applyCh chan raft.ApplyMsg
+	dead    int32 // set by Kill()
+	killCh  chan struct{}
 
 	// Your data here.
 	machine        *SCMachine
@@ -44,6 +47,10 @@ type Op struct {
 
 func (sc *ShardCtrler) Join(args *JoinArgs, reply *JoinReply) {
 	// Your code here.
+	if sc.killed() {
+		reply.Err = ErrKilled
+		return
+	}
 	entry := sc.getDuplicateEntry(args.ClientID, true)
 	if entry.Seq >= args.Seq {
 		reply.Err = entry.Err
@@ -82,6 +89,10 @@ func (sc *ShardCtrler) Join(args *JoinArgs, reply *JoinReply) {
 
 func (sc *ShardCtrler) Leave(args *LeaveArgs, reply *LeaveReply) {
 	// Your code here.
+	if sc.killed() {
+		reply.Err = ErrKilled
+		return
+	}
 	entry := sc.getDuplicateEntry(args.ClientID, true)
 	if entry.Seq >= args.Seq {
 		reply.Err = entry.Err
@@ -120,6 +131,10 @@ func (sc *ShardCtrler) Leave(args *LeaveArgs, reply *LeaveReply) {
 
 func (sc *ShardCtrler) Move(args *MoveArgs, reply *MoveReply) {
 	// Your code here.
+	if sc.killed() {
+		reply.Err = ErrKilled
+		return
+	}
 	entry := sc.getDuplicateEntry(args.ClientID, true)
 	if entry.Seq >= args.Seq {
 		reply.Err = entry.Err
@@ -158,6 +173,10 @@ func (sc *ShardCtrler) Move(args *MoveArgs, reply *MoveReply) {
 
 func (sc *ShardCtrler) Query(args *QueryArgs, reply *QueryReply) {
 	// Your code here.
+	if sc.killed() {
+		reply.Err = ErrKilled
+		return
+	}
 	entry := sc.getDuplicateEntry(args.ClientID, true)
 	if entry.Seq >= args.Seq {
 		reply.Config = entry.Config
@@ -203,6 +222,18 @@ func (sc *ShardCtrler) Query(args *QueryArgs, reply *QueryReply) {
 func (sc *ShardCtrler) Kill() {
 	sc.rf.Kill()
 	// Your code here, if desired.
+	atomic.StoreInt32(&sc.dead, 1)
+
+	go func() {
+		time.Sleep(time.Duration(5) * time.Second)
+		close(sc.applyCh)
+		// sc.killCh <- struct{}{}
+	}()
+}
+
+func (sc *ShardCtrler) killed() bool {
+	z := atomic.LoadInt32(&sc.dead)
+	return z == 1
 }
 
 // needed by shardkv tester
@@ -224,8 +255,8 @@ func (sc *ShardCtrler) getDuplicateEntry(clientID int64, create bool) DuplicateE
 func (sc *ShardCtrler) getNotifyChannel(index int, create bool) chan NotifyMsg {
 	sc.mu.Lock()
 	defer sc.mu.Unlock()
-	ch, ok := sc.notifyChMap[index]
-	if !ok && create {
+	ch := sc.notifyChMap[index]
+	if create {
 		sc.notifyChMap[index] = make(chan NotifyMsg)
 		ch = sc.notifyChMap[index]
 	}
@@ -234,6 +265,7 @@ func (sc *ShardCtrler) getNotifyChannel(index int, create bool) chan NotifyMsg {
 
 func (sc *ShardCtrler) applier() {
 	for msg := range sc.applyCh {
+
 		if msg.CommandValid {
 			op := msg.Command.(Op)
 			// Return for a duplicated request.
@@ -313,6 +345,7 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister)
 
 	labgob.Register(Op{})
 	sc.applyCh = make(chan raft.ApplyMsg)
+	sc.killCh = make(chan struct{})
 	sc.rf = raft.Make(servers, me, persister, sc.applyCh)
 
 	// Your code here.

@@ -25,6 +25,7 @@ const (
 	ErrOverWritten = "ErrOverWritten"
 	ErrTimeout     = "ErrTimeout"
 	ErrConfigNum   = "ErrConfigNum"
+	ErrKilled      = "ErrKilled"
 )
 
 const RequestTimeout = 500 * time.Millisecond
@@ -118,7 +119,7 @@ type MigrateReply struct {
 	DuplicateTable map[int64]DuplicateEntry
 }
 
-const Debug = true
+const Debug = false
 
 type logTopic string
 

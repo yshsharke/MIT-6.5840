@@ -4,7 +4,10 @@ package shardctrler
 // Shardctrler clerk.
 //
 
-import "6.5840/labrpc"
+import (
+	"6.5840/labrpc"
+	"time"
+)
 import "crypto/rand"
 import "math/big"
 
@@ -45,8 +48,10 @@ func (ck *Clerk) Query(num int) Config {
 		ok := ck.servers[ck.leader].Call("ShardCtrler.Query", args, reply)
 		if !ok || reply.Err == ErrWrongLeader || reply.Err == ErrTimeout {
 			ck.leader++
+			time.Sleep(time.Duration(50) * time.Millisecond)
 			continue
 		} else if reply.Err == ErrOverWritten {
+			time.Sleep(time.Duration(50) * time.Millisecond)
 			continue
 		} else {
 			DPrintf(dCtrler, "Query %d:%v\n", num, reply.Config)
@@ -69,8 +74,10 @@ func (ck *Clerk) Join(servers map[int][]string) {
 		ok := ck.servers[ck.leader].Call("ShardCtrler.Join", args, reply)
 		if !ok || reply.Err == ErrWrongLeader || reply.Err == ErrTimeout {
 			ck.leader++
+			time.Sleep(time.Duration(50) * time.Millisecond)
 			continue
 		} else if reply.Err == ErrOverWritten {
+			time.Sleep(time.Duration(50) * time.Millisecond)
 			continue
 		} else {
 			DPrintf(dCtrler, "Join %v\n", servers)
@@ -93,8 +100,10 @@ func (ck *Clerk) Leave(gids []int) {
 		ok := ck.servers[ck.leader].Call("ShardCtrler.Leave", args, reply)
 		if !ok || reply.Err == ErrWrongLeader || reply.Err == ErrTimeout {
 			ck.leader++
+			time.Sleep(time.Duration(50) * time.Millisecond)
 			continue
 		} else if reply.Err == ErrOverWritten {
+			time.Sleep(time.Duration(50) * time.Millisecond)
 			continue
 		} else {
 			DPrintf(dCtrler, "Leave %v\n", gids)
@@ -118,8 +127,10 @@ func (ck *Clerk) Move(shard int, gid int) {
 		ok := ck.servers[ck.leader].Call("ShardCtrler.Move", args, reply)
 		if !ok || reply.Err == ErrWrongLeader || reply.Err == ErrTimeout {
 			ck.leader++
+			time.Sleep(time.Duration(50) * time.Millisecond)
 			continue
 		} else if reply.Err == ErrOverWritten {
+			time.Sleep(time.Duration(50) * time.Millisecond)
 			continue
 		} else {
 			DPrintf(dCtrler, "Move %d->%d\n", shard, gid)
