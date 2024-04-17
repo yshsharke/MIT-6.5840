@@ -71,7 +71,7 @@ type GetReply struct {
 	Value string
 }
 
-const Debug = true
+const Debug = false
 
 type logTopic string
 

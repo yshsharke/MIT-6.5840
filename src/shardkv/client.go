@@ -69,6 +69,8 @@ func (ck *Clerk) Get(key string) string {
 	args.ClientID = ck.clientID
 	args.Seq = ck.seq
 
+	start := time.Now()
+
 	for {
 		shard := key2shard(key)
 		gid := ck.config.Shards[shard]
@@ -77,13 +79,16 @@ func (ck *Clerk) Get(key string) string {
 			for si := 0; si < len(servers); si++ {
 				srv := ck.make_end(servers[si])
 				var reply GetReply
+				if time.Since(start) > 20*time.Second {
+					panic("timeout")
+				}
 				ok := srv.Call("ShardKV.Get", &args, &reply)
 				if ok && (reply.Err == OK || reply.Err == ErrNoKey) {
 					return reply.Value
 				}
-				if ok && (reply.Err == ErrWrongGroup) {
-					break
-				}
+				//if ok && (reply.Err == ErrWrongGroup) {
+				//	break
+				//}
 				// ... not ok, or ErrWrongLeader
 				if ok && (reply.Err == ErrOverWritten) {
 					si--
@@ -113,6 +118,8 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 	args.ClientID = ck.clientID
 	args.Seq = ck.seq
 
+	start := time.Now()
+
 	for {
 		shard := key2shard(key)
 		gid := ck.config.Shards[shard]
@@ -120,13 +127,16 @@ func (ck *Clerk) PutAppend(key string, value string, op string) {
 			for si := 0; si < len(servers); si++ {
 				srv := ck.make_end(servers[si])
 				var reply PutAppendReply
+				if time.Since(start) > 20*time.Second {
+					panic("timeout")
+				}
 				ok := srv.Call("ShardKV.PutAppend", &args, &reply)
 				if ok && reply.Err == OK {
 					return
 				}
-				if ok && reply.Err == ErrWrongGroup {
-					break
-				}
+				//if ok && reply.Err == ErrWrongGroup {
+				//	break
+				//}
 				// ... not ok, or ErrWrongLeader
 				if ok && (reply.Err == ErrOverWritten) {
 					si--

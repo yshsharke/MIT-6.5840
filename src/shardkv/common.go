@@ -75,7 +75,7 @@ type ShardStatus string
 const (
 	Unavailable ShardStatus = "Unavailable"
 	Available   ShardStatus = "Available"
-	Pulling     ShardStatus = "Pulling"
+	Removed     ShardStatus = "Removed"
 )
 
 // Put or Append
@@ -117,6 +117,15 @@ type MigrateReply struct {
 	Err            Err
 	Data           map[string]string
 	DuplicateTable map[int64]DuplicateEntry
+}
+
+type AckMigrateArgs struct {
+	Shard     int
+	ConfigNum int
+}
+
+type AckMigrateReply struct {
+	Err Err
 }
 
 const Debug = false

@@ -1,6 +1,8 @@
 package shardkv
 
-import "sync"
+import (
+	"sync"
+)
 
 type KVMachine struct {
 	gid    int
@@ -59,6 +61,10 @@ func (kv *KVMachine) SetShard(shard int, data map[string]string) {
 	kv.mu.Lock()
 	defer kv.mu.Unlock()
 	kv.shards[shard] = data
+}
+
+func (kv *KVMachine) DeleteShard(shard int) {
+	kv.SetShard(shard, nil)
 }
 
 func (kv *KVMachine) SetState(state map[int]map[string]string) {
