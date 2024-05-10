@@ -73,6 +73,7 @@ type DuplicateEntry struct {
 type ShardStatus string
 
 const (
+	Unknown     ShardStatus = "Unknown"
 	Unavailable ShardStatus = "Unavailable"
 	Available   ShardStatus = "Available"
 	Removed     ShardStatus = "Removed"

@@ -48,8 +48,8 @@ func (kv *ShardKV) Get(args *GetArgs, reply *GetReply) {
 		DPrintf(dServer, "G%dS%d %d:%d Key %v Wrong Group\n", kv.gid, kv.me, args.ClientID, args.Seq, args.Key)
 		return
 	}
-	entry := kv.getDuplicateEntry(args.ClientID, true)
-	if entry.Seq >= args.Seq {
+	entry, ok := kv.getDuplicateEntry(args.ClientID)
+	if ok && entry.Seq >= args.Seq {
 		reply.Err = entry.Err
 		reply.Value = entry.Value
 		DPrintf(dServer, "G%dS%d Dup %d:%d Get {%v:%v} %v\n", kv.gid, kv.me, args.ClientID, args.Seq, args.Key, reply.Value, reply.Err)
@@ -100,8 +100,8 @@ func (kv *ShardKV) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 		DPrintf(dServer, "G%dS%d %d:%d Key %v Wrong Group\n", kv.gid, kv.me, args.ClientID, args.Seq, args.Key)
 		return
 	}
-	entry := kv.getDuplicateEntry(args.ClientID, true)
-	if entry.Seq >= args.Seq {
+	entry, ok := kv.getDuplicateEntry(args.ClientID)
+	if ok && entry.Seq >= args.Seq {
 		reply.Err = entry.Err
 		DPrintf(dServer, "G%dS%d Dup %d:%d %v {%v:%v} %v\n", kv.gid, kv.me, args.ClientID, args.Seq, args.Op, args.Key, args.Value, reply.Err)
 		return
@@ -235,6 +235,14 @@ func (kv *ShardKV) poller() {
 	}
 }
 
+func (kv *ShardKV) ticker() {
+	for !kv.killed() {
+		kv.rf.Start(Command{Type: "Cfg", Content: Cfg{CfgType: "Nop"}})
+
+		time.Sleep(time.Duration(100) * time.Millisecond)
+	}
+}
+
 func (kv *ShardKV) gcShard(shard int) {
 	for !kv.killed() {
 		if kv.shards[shard] != Unavailable {
@@ -292,7 +300,7 @@ func (kv *ShardKV) addShard(shard int, configNum int, source int) {
 				} else if ok && (reply.Err == ErrConfigNum) {
 					// Wait for source to reconfig.
 					si--
-					time.Sleep(time.Duration(60) * time.Millisecond)
+					time.Sleep(time.Duration(20) * time.Millisecond)
 				}
 				// time.Sleep(time.Duration(50) * time.Millisecond)
 			}
@@ -346,7 +354,7 @@ func (kv *ShardKV) migrated(shard int, configNum int, source int) {
 				} else if ok && (reply.Err == ErrConfigNum) {
 					// Wait for source to reconfig.
 					si--
-					time.Sleep(time.Duration(50) * time.Millisecond)
+					time.Sleep(time.Duration(40) * time.Millisecond)
 				}
 			}
 		}
@@ -390,8 +398,8 @@ func (kv *ShardKV) applier() {
 				}
 
 				// Return for a duplicated request.
-				entry := kv.getDuplicateEntry(op.ClientID, true)
-				if entry.Seq >= op.Seq {
+				entry, ok := kv.getDuplicateEntry(op.ClientID)
+				if ok && entry.Seq >= op.Seq {
 					_, isLeader := kv.rf.GetState()
 					if isLeader {
 						// The notify channel may be closed.
@@ -488,17 +496,35 @@ func (kv *ShardKV) applier() {
 						DPrintf(dConfig, "G%dA%d Add %d\n", kv.gid, kv.me, cfg.Shard)
 					}
 				} else if cfg.CfgType == "Ack" {
-					kv.mu.Lock()
-					kv.config = cfg.Config
-					for shard, gid := range kv.config.Shards {
-						if gid == kv.gid {
-							kv.shards[shard] = Available
-						} else {
-							kv.shards[shard] = Unavailable
+					// kv.config = cfg.Config
+					updateCfg := true
+					for shard, status := range kv.shards {
+						if status == Unknown {
+							continue
+						}
+						if status != Available && cfg.Config.Shards[shard] == kv.gid {
+							updateCfg = false
+							break
+						}
+						if status == Available && cfg.Config.Shards[shard] != kv.gid {
+							updateCfg = false
+							break
 						}
 					}
-					kv.mu.Unlock()
-					DPrintf(dConfig, "G%dA%d Ack %d\n", kv.gid, kv.me, cfg.Num)
+					if updateCfg {
+						kv.mu.Lock()
+						kv.config = cfg.Config
+						for shard, gid := range cfg.Config.Shards {
+							if gid == kv.gid {
+								kv.shards[shard] = Available
+							} else {
+								kv.shards[shard] = Unavailable
+							}
+						}
+						kv.mu.Unlock()
+
+						DPrintf(dConfig, "G%dA%d Ack %d\n", kv.gid, kv.me, cfg.Num)
+					}
 				} else if cfg.CfgType == "GC" {
 					if kv.shards[cfg.Shard] == Unavailable {
 						kv.mu.Lock()
@@ -527,18 +553,14 @@ func (kv *ShardKV) applier() {
 	}
 }
 
-func (kv *ShardKV) getDuplicateEntry(clientID int64, create bool) DuplicateEntry {
+func (kv *ShardKV) getDuplicateEntry(clientID int64) (DuplicateEntry, bool) {
 	if clientID == 0 {
-		return DuplicateEntry{Seq: -1}
+		return DuplicateEntry{Seq: -1}, true
 	}
 	kv.mu.Lock()
 	defer kv.mu.Unlock()
 	entry, ok := kv.duplicateTable[clientID]
-	if !ok && create {
-		kv.duplicateTable[clientID] = DuplicateEntry{}
-		entry = kv.duplicateTable[clientID]
-	}
-	return entry
+	return entry, ok
 }
 
 func (kv *ShardKV) getNotifyChannel(index int, create bool) chan NotifyMsg {
@@ -676,6 +698,9 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 	for shard := range kv.config.Shards {
 		kv.config.Shards[shard] = -1
 	}
+	for shard := range kv.shards {
+		kv.shards[shard] = Unknown
+	}
 
 	// Use something like this to talk to the shardctrler:
 	// kv.mck = shardctrler.MakeClerk(kv.ctrlers)
@@ -698,6 +723,8 @@ func StartServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister,
 	go kv.applier()
 
 	go kv.poller()
+
+	// go kv.ticker()
 
 	return kv
 }

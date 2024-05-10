@@ -13,3 +13,6 @@ api.key
 
 /src/shardctrler/output
 /src/shardctrler/env.sh
+
+/src/shardkv/output
+/src/shardkv/env.sh

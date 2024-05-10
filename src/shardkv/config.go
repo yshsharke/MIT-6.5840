@@ -87,7 +87,6 @@ func (cfg *config) cleanup() {
 	cfg.checkTimeout()
 
 	// time.Sleep(time.Duration(10) * time.Second)
-	fmt.Printf("end go routines: %d\n", runtime.NumGoroutine())
 	//buf := make([]byte, 1<<20)
 	//length := runtime.Stack(buf, true)
 	//fmt.Printf("Goroutine Info:\n%s\n", buf[:length])
@@ -342,7 +341,7 @@ func (cfg *config) leavem(gis []int) {
 var ncpu_once sync.Once
 
 func make_config(t *testing.T, n int, unreliable bool, maxraftstate int) *config {
-	fmt.Printf("start go routines: %d\n", runtime.NumGoroutine())
+	fmt.Printf("goroutine: %d\n", runtime.NumGoroutine())
 	//buf := make([]byte, 1<<20)
 	//length := runtime.Stack(buf, true)
 	//fmt.Printf("Goroutine Info:\n%s\n", buf[:length])

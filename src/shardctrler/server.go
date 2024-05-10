@@ -51,8 +51,8 @@ func (sc *ShardCtrler) Join(args *JoinArgs, reply *JoinReply) {
 		reply.Err = ErrKilled
 		return
 	}
-	entry := sc.getDuplicateEntry(args.ClientID, true)
-	if entry.Seq >= args.Seq {
+	entry, ok := sc.getDuplicateEntry(args.ClientID)
+	if ok && entry.Seq >= args.Seq {
 		reply.Err = entry.Err
 		// Dprintf(dCtrler, "S%d Dup %d:%d Join %v\n", sc.me, args.ClientID, args.Seq, reply.Err)
 		return
@@ -93,8 +93,8 @@ func (sc *ShardCtrler) Leave(args *LeaveArgs, reply *LeaveReply) {
 		reply.Err = ErrKilled
 		return
 	}
-	entry := sc.getDuplicateEntry(args.ClientID, true)
-	if entry.Seq >= args.Seq {
+	entry, ok := sc.getDuplicateEntry(args.ClientID)
+	if ok && entry.Seq >= args.Seq {
 		reply.Err = entry.Err
 		// Dprintf(dCtrler, "S%d Dup %d:%d Leave %v\n", sc.me, args.ClientID, args.Seq, reply.Err)
 		return
@@ -135,8 +135,8 @@ func (sc *ShardCtrler) Move(args *MoveArgs, reply *MoveReply) {
 		reply.Err = ErrKilled
 		return
 	}
-	entry := sc.getDuplicateEntry(args.ClientID, true)
-	if entry.Seq >= args.Seq {
+	entry, ok := sc.getDuplicateEntry(args.ClientID)
+	if ok && entry.Seq >= args.Seq {
 		reply.Err = entry.Err
 		// Dprintf(dCtrler, "S%d Dup %d:%d Move %v\n", sc.me, args.ClientID, args.Seq, reply.Err)
 		return
@@ -177,8 +177,8 @@ func (sc *ShardCtrler) Query(args *QueryArgs, reply *QueryReply) {
 		reply.Err = ErrKilled
 		return
 	}
-	entry := sc.getDuplicateEntry(args.ClientID, true)
-	if entry.Seq >= args.Seq {
+	entry, ok := sc.getDuplicateEntry(args.ClientID)
+	if ok && entry.Seq >= args.Seq {
 		reply.Config = entry.Config
 		reply.Err = entry.Err
 		// Dprintf(dCtrler, "S%d Dup %d:%d Query %v %v\n", sc.me, args.ClientID, args.Seq, reply.Config, reply.Err)
@@ -241,15 +241,11 @@ func (sc *ShardCtrler) Raft() *raft.Raft {
 	return sc.rf
 }
 
-func (sc *ShardCtrler) getDuplicateEntry(clientID int64, create bool) DuplicateEntry {
+func (sc *ShardCtrler) getDuplicateEntry(clientID int64) (DuplicateEntry, bool) {
 	sc.mu.Lock()
 	defer sc.mu.Unlock()
 	entry, ok := sc.duplicateTable[clientID]
-	if !ok && create {
-		sc.duplicateTable[clientID] = DuplicateEntry{}
-		entry = sc.duplicateTable[clientID]
-	}
-	return entry
+	return entry, ok
 }
 
 func (sc *ShardCtrler) getNotifyChannel(index int, create bool) chan NotifyMsg {
@@ -269,8 +265,8 @@ func (sc *ShardCtrler) applier() {
 		if msg.CommandValid {
 			op := msg.Command.(Op)
 			// Return for a duplicated request.
-			entry := sc.getDuplicateEntry(op.ClientID, true)
-			if entry.Seq >= op.Seq {
+			entry, ok := sc.getDuplicateEntry(op.ClientID)
+			if ok && entry.Seq >= op.Seq {
 				_, isLeader := sc.rf.GetState()
 				if isLeader {
 					// The notify channel may be closed.

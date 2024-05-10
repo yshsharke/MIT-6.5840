@@ -30,8 +30,8 @@ type KVServer struct {
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 	// Your code here.
-	entry := kv.getDuplicateEntry(args.ClientID, true)
-	if entry.Seq >= args.Seq {
+	entry, ok := kv.getDuplicateEntry(args.ClientID)
+	if ok && entry.Seq >= args.Seq {
 		reply.Err = entry.Err
 		reply.Value = entry.Value
 		DPrintf(dServer, "S%d Dup %d:%d Get {%v:%v} %v\n", kv.me, args.ClientID, args.Seq, args.Key, reply.Value, reply.Err)
@@ -72,8 +72,8 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
 	// Your code here.
-	entry := kv.getDuplicateEntry(args.ClientID, true)
-	if entry.Seq >= args.Seq {
+	entry, ok := kv.getDuplicateEntry(args.ClientID)
+	if ok && entry.Seq >= args.Seq {
 		reply.Err = entry.Err
 		DPrintf(dServer, "S%d Dup %d:%d %v {%v:%v} %v\n", kv.me, args.ClientID, args.Seq, args.Op, args.Key, args.Value, reply.Err)
 		return
@@ -120,8 +120,8 @@ func (kv *KVServer) applier() {
 				continue
 			}
 
-			entry := kv.getDuplicateEntry(op.ClientID, true)
-			if entry.Seq >= op.Seq {
+			entry, ok := kv.getDuplicateEntry(op.ClientID)
+			if ok && entry.Seq >= op.Seq {
 				_, isLeader := kv.rf.GetState()
 				if isLeader {
 					// The notify channel may be closed.
@@ -194,22 +194,18 @@ func (kv *KVServer) applier() {
 	}
 }
 
-func (kv *KVServer) getDuplicateEntry(clientID int64, create bool) DuplicateEntry {
+func (kv *KVServer) getDuplicateEntry(clientID int64) (DuplicateEntry, bool) {
 	kv.mu.Lock()
 	defer kv.mu.Unlock()
 	entry, ok := kv.duplicateTable[clientID]
-	if !ok && create {
-		kv.duplicateTable[clientID] = DuplicateEntry{}
-		entry = kv.duplicateTable[clientID]
-	}
-	return entry
+	return entry, ok
 }
 
 func (kv *KVServer) getNotifyChannel(index int, create bool) chan NotifyMsg {
 	kv.mu.Lock()
 	defer kv.mu.Unlock()
-	ch, ok := kv.notifyChMap[index]
-	if !ok && create {
+	ch := kv.notifyChMap[index]
+	if create {
 		kv.notifyChMap[index] = make(chan NotifyMsg)
 		ch = kv.notifyChMap[index]
 	}
@@ -221,11 +217,11 @@ func (kv *KVServer) createSnapshot() []byte {
 	//DPrintf(dDebug, "S%d State %v\n", kv.me, kv.machine.GetState())
 	w := new(bytes.Buffer)
 	e := labgob.NewEncoder(w)
-	kv.mu.Lock()
+	// kv.mu.Lock()
 	e.Encode(kv.lastApplied)
 	e.Encode(kv.duplicateTable)
 	e.Encode(kv.machine.GetState())
-	kv.mu.Unlock()
+	// kv.mu.Unlock()
 	data := w.Bytes()
 	DPrintf(dSnapshot, "S%d Create\n", kv.me)
 	return data
@@ -245,11 +241,11 @@ func (kv *KVServer) installSnapshot(data []byte) {
 		d.Decode(&state) != nil {
 
 	} else {
-		kv.mu.Lock()
+		// kv.mu.Lock()
 		kv.lastApplied = lastApplied
 		kv.duplicateTable = duplicateTable
 		kv.machine.SetState(state)
-		kv.mu.Unlock()
+		// kv.mu.Unlock()
 	}
 }
 
